@@ -1,0 +1,191 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% hw_assignment_2.tex
+% July 1, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Homework Assignment 2} 
+
+{\bf Summary:} {\color{red} The goal of assignments is to learn the material, which means it is fine to collaborate with fellow students and any other resource as long as you appropriately cite your source.}
+\par \bigskip \par
+
+
+% -----------------------------------------------------
+
+{\bf  1. Practice MATLAB} \\
+Use Matlab for the following problems. \par \medskip \noindent
+%
+Question 1.A: A popular technique used in science and engineering is the semilogy plot, which is the plot of data using log of one coordinate and the plain values of the other. Consider the function $\ds y=3*4^{2x}$. This can be placed into Matlab via the following commands
+\begin{verbatim}
+>> x = [-1:0.1:3]; %creates a vector of x from -1 to 3 with step size 0.1
+>> y = 3*4.^(2*x); 
+%the .^ tells Matlab to carry out the multiplication 
+%component wise for the vector
+>> figure(1)
+>> plot(x,y);
+>> title('Plot of x and y=3*4^{2x}')
+>> figure(2)
+>> plot(x,log(y));
+>> title('Plot of x and log(y)=log(3*4^{2x})')    
+\end{verbatim}
+\par
+Compare the plots of plot(x,y) and plot(x,log(y)). Describe what is the advantage of using the semilogy plot. 
+\medskip \par \noindent
+%
+Question 1.B: The power of the semilogy plot comes from the identities we can use from the logarithm. Consider the following:
+\begin{align*}
+y &= 3*4^{2x}\\
+\log (y) &= \log (3*4^{2x}) \\
+ &= \log (3) + 2x \log(4)
+\end{align*}
+\\
+Does this work help explain the results you found in Question A?  Please explain the connection. 
+
+\medskip \par \noindent
+%
+Question 1.C: How would things change if you compared the semilogy plot of $\ds y = 3*4^{2x}$ and the semilogy plot of $\ds y = 3*4^{5x}$? Be as complete and as specific in your answer as possible. \medskip \par \noindent
+%
+Question 1.D: Another tool to consider is the log-log plot, which plots the log of each coordinate. Consider the log-log plot of $\ds y = 4x^3$, which can be given by
+\begin{verbatim}
+>> x = [0.1:0.01:5]; %creates a vector of x from 0.1 to 5 with step size 0.01
+>> y = 4*x.^3; 
+%the .^ tells Matlab to carry out the multiplication 
+%component wise for the vector
+>> figure(1)
+>> plot(x,y);
+>> title('Plot of x and y=4x^3')
+>> figure(2)
+>> plot(log(x),log(y));
+>> title('Plot of x and log(y)=log(4x^3)')    
+\end{verbatim}
+\par
+Describe the differences between plot(x,y) and plot(log(x),log(y)) in this case. 
+\medskip \par \noindent
+%
+Question 1.E: Use the logarithm rules (like we did in Question B) to derive the connection between the log-log plot for the function $\ds y=4x^3$.
+\medskip \par \noindent
+%
+Question 1F: Go back to question 3.A on Homework 1. We can use 
+$$\alpha \approx \frac {\ln \biggr \vert \frac {p_n-p}{p_{n-1}-p}\biggr \vert}{\ln \biggr \vert \frac {p_{n-1}-p}{p_{n-2}-p}\biggr \vert}$$
+to numerically estimate the order of convergence of a sequence $\ds p_n$ that converges to $p$. Write a MATLAB program that takes in input of a vector containing elements of a sequence plus input of the limiting value, which is then used to calculate the numerical estimate of $\alpha$. (Please remember that in MATLAB the command that is used for computing $\ln(x)$ is actually $\log(x)$.)
+\par \bigskip \par
+% -----------------------------------------------------
+{\bf 2. Taylor's Polynomial and Convergence} \\
+
+\par \medskip \noindent
+%
+Question 2.A: Use a Matlab script file to compute the second order, third order, fourth order, and fifth order Taylor's polynomial approximation of $\ds \ln(x)$ centered at $\ds x_0=1$ with user input of x value. You can use logt.m as a template for this question if you wish. \medskip \par \noindent
+%
+Question 2.B: Using the work from question 2.A, calculate the approximations for $x=1/4$ and analyze the convergence pattern.  \medskip \par \noindent
+%
+Question 2.C:  Using the work from question 2.A, calculate the approximations for $x=4/3$ and analyze the convergence pattern. How does this compare to the convergence pattern for question 2.B? What do you anticipate would happen if you calculated higher order terms in this case?  
+\medskip \par \noindent
+%
+Question 2.D: Using the work from question 2.A, calculate the approximations for $x=5/2$ and analyze the convergence pattern. How does this compare to the convergence pattern for question 2.C? What do you anticipate would happen if you calculated higher order terms in this case?  \medskip \par \noindent
+%
+Question 2.E: What would change if the center point for the polynomial was changed to $x_0=3$ for each of the questions above? 
+\par \bigskip \par
+% -----------------------------------------------------
+{\bf 3. Linear Interpolation} \\  \par \medskip \noindent
+Please refer to the notes, lecture 4, for the introduction of linear interpolation. 
+\par \medskip \noindent
+%
+Question 3.A: Use Matlab to code up a function that completes the calculation of linear interpolation using the method developed in the notes. Your function should have the format of: function [flag, y] = linterp(x,x0,y0,x1,y1), where the data points are $\ds (x_0, y_0)$, $\ds (x_1, y_1)$, and the program will calculate $y$ from the requested value of $x$ in the input. The return values are $y$ and a flag. 
+\medskip \par \noindent
+%
+Question 3.B: What can influence the accuracy of the method in 3.A?
+  \medskip \par \noindent
+%
+Question 3.C: In the notes, $\ds x_0$ is less than $\ds x_1$. Is it required in the method that $\ds x_1 > x_0$? Please explain your answer.  
+\medskip \par \noindent
+%
+Question 3.D:  A flag is usually used for alerting for either inappropriate input and/or inappropriate output. Is there any places where a flag is needed for linear interpolation?
+\medskip \par \noindent
+%
+Question 3.E:  Discuss how you would implement linear interpolation using Matlab if the input included four or five data points and the mandate was to linearly interpolate for a requested value $x$, which was located between two data points. 
+\medskip \par \noindent
+%
+{\bf 4. Newton's Divided Difference}. \medskip \par
+Question 4.A: Please refer to the notes regarding Newton's Divided Difference. A significant test in programming is implementing divided difference as a Matlab program. Attempt programming a Matlab function that has the form: $>>$function [flag, yp] = newdivdiff(x,y,degree,xp), where x is a vector of the x coordinates of a data set with the associated y values being stored in a vector y. Thus, the data set (1,1.3), (3,5.2), (7,8.3), and (9.1,11.6) would translate into the input of: x=[1, 3, 7, 9.1] and y = [1.3, 5.2, 8.3, 11.6]. The other inputs to the function include the degree of the approximation and xp is the value that is being interpolated to construct the y value that is associated with xp using Newton's divide difference and the user provided data set. The output is the interpolated value yp (comes from the fact that the interpolated value is yp=f(xp) with f(x) being the interpolating polynomial) and flag is a warning flag for any problems with the calculation. Please include your program in your homework report. 
+\medskip \par \noindent
+Question 4.B: What are the possible flags to worry about with the use of Newton's Divided Difference Method? How would you implement the flags you devised?
+\medskip \par \noindent
+Question 4.C: Apply your program to the data set: x = [10, 15, 20, 22.5, 30], y = [227.04, 362.78, 517.35, 602.97, 901.67] interpolating the values for xp at 12.8, 22.5, and 27 using degree estimates of degree 2, 3, and 4 for each value to be interpolated. This data set is from example 2 in chapter 5 within section 3 of \cite{KK09}. Please reflect on your results. 
+\medskip \par \noindent
+Question 4.D: Apply your program
+to the data set: x = [10, 12, 14, 16, 20, 22, 25], y = [106.6, 94.1, 80.9, 93.8, 108.3, 110.1, 98.6] interpolating the values for xp at 21, 22.5, and 27 using degree estimates of degree 2, 5, and 6 for each value to be interpolated. Please reflect on your results. 
+\medskip \par \noindent
+Question 4.E: How did you verify your program is working correctly? What could negatively influence the accuracy of this method?  Please be as complete as possible in your answer. 
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{KK09} {\sc Autar Kaw} and {\sc E. Eric Kalu}, {\it Numerical Methods with Applications (2nd ed.)}, 2009. Website: \href{http://autarkaw.com/books/numericalmethods/index.html}{book website} .
+
+\bibentry{Matlab} {\sc Matlab website}, \href{https://www.mathworks.com}{www.mathworks.com}, August 2019. % put exact and full link in the first listing right after href
+
+
+\endrefs
+
+
+
+\end{document}

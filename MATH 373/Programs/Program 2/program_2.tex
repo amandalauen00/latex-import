@@ -1,0 +1,92 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% program_2.tex
+% June 8, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Program 2} \par \medskip \noindent
+%
+{\bf Summary:} The goal of this project is to construct a program that implements the secant method. \cite{LB16}. 
+\par \bigskip \par \noindent
+In this assignment, you are to construct a simple MATLAB program that takes the input of a function along with the initial guesses and the program will return a flag and an approximation of the root to the given problem.  Your program will specifically have the following format: \par \medskip
+function [flag, approx] = progb\#\#\#\#\#\#(f,a,b,tol) \par \medskip \noindent
+%
+where the file name is progb followed by your six digit Math 373 student number  followed by ".m" to make it an m-file. The $f$ is an anonymous function supplied by the user. To illustrate, a specific test that will be run is the following: 
+\begin{verbatim}
+>> [flag, approx] = progb123456(@(x) exp(x) -5, 1.5, 1.6, 0.0001);
+\end{verbatim}
+The input of $a$ and $b$ represent the inputs in the algorithm of $\ds x_0$ and $\ds x_1$ respectfully. The input of $tol$ is the stopping tolerance where the algorithm stops when $\ds \frac {\vert x_k - x_{k-1}\vert }{\vert x_k \vert } < tol$.
+
+The flag variable indicates a successful run, or a run that has some kind of error. If the run is without error then flag=0 and the program provides the approximation from the Secant Method. The input for $tol$ must be larger than 0 and it must also be the case that $\ds a \neq b$, violations of these input restrictions should result in flag = 1 and approx = -99. If the algorithm fails to converge then flag = 2 can be used to denote this failure. You can design your program with the assumption that f is a properly defined anonymous function in MATLAB. 
+
+Please include a discussion in your report on how you validated that your program is producing an accurate calculation. Is it possible to have a check that a solution to $f(x) = 0$ exists?  If it is possible to test for the existence of a solution then please describe what can be done. Is it possible to verify that approx is a feasible solution to the problem?  If it is possible to have a check that approx is a feasible solution then please describe in detail how that check can be implemented in MATLAB. Lastly, please note your program should only return the output variables and should not output or print anything else. 
+
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{KR21} {\sc Kyle Riley}, Class Lecture, Math 373: Introduction to Numerical Analysis, Lecture, August 2021. 
+\endrefs
+\par \bigskip \noindent
+
+
+\end{document}

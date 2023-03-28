@@ -1,0 +1,87 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% program_1.tex
+% August 18, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Program 1} \par \medskip \noindent
+%
+{\bf Summary:} The goal of this project is to construct the closest binary bit string of length 12 that is similar to the binary expansion of a number using the mantissa component of the IEEE single precision format presented in class.  Machine arithmetic is covered in lecture 3 of the notes \cite{KR21}. 
+\par \bigskip \par \noindent
+In this assignment, you are to construct a simple MATLAB program that calculates a binary string (of length 12) that corresponds to the closest binary bit string to a given decimal number. Your program will specifically have the following format: \par \medskip
+function [flag, b, r] = proga\#\#\#\#\#\#(x) \par \medskip \noindent
+%
+where the file name is proga followed by your six digit Math 373 student number  followed by ".m" to make it an m-file. The $x$ is a decimal number greater than (or equal to) $\ds 2^{-12}$ and less than (or equal to) the largest possible number that can be represented via 12 bit string. The output is a binary string, $b$, that has length 12. Please note the output of $b$ must be a column vector that is 12 by 1. The bit string, $b$, constructs a decimal number via the formula:
+$$m = \sum_{k=1}^n b_k*2^{-k},$$ and recall notation of $\ds b_k$ translates into MATLAB as $\ds b_k = b(k)$ and the values of each element of $b$ is either 0 or 1 for all $k$. The other output value is $r$, which is the remainder since it is possible that we cannot represent $x$ exactly with a binary string. The flag variable indicates a successful run, or a run that has some kind of error. If the run is without error then flag=0 and the vector $b$ represents the bit string while $r$ is the remainder. If the input of $x$ is smaller than $\ds 2^{-12}$ or larger than any number represented by a 12 bit binary string then $flag = 1$ (you do not have to worry about input where $x$ is not a number).  Any time the program generates a flag that is not zero then it should return the values of: $b=-1$ and $r= -9$. 
+
+Please include a discussion in your report on how you validated that your program is producing an accurate calculation. Lastly, please note your program should only return the output variables and should not output or print anything else. 
+
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+\bibentry{KR21} {\sc Kyle Riley}, Class Lecture, Math 373: Introduction to Numerical Analysis, Lecture, August 2021. 
+\endrefs
+\par \bigskip \noindent
+{\bf Note:} A sample program of proga1.m is provided in the D2L content for program 1. This is a sample program that solves a slightly different problem where the user inputs an integer between 1 and 255 (including the endpoints) and returns a bit string that represents that number. In this case the bit string is $a$ and the number is calculated via 
+$$m = \sum_{k=0}^7 a_k*2^k\ .$$
+It is important to remember that MATLAB cannot index with a zero and that means we must shift indexing in order to build the vector that stores the bit string $a$. Thus, what we reference as $\ds a_0$ in the formula must be stored in the location of a(1) in Matlab. This should explain the use of a(k+1) in the loop to build the vector. You can use proga1.m to help devise a solution to program 1, but please cite the source in your report if you end up using some of the code. 
+
+
+\end{document}

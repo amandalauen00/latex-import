@@ -1,0 +1,99 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% program_4.tex
+% June 10, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Program 4} \par \medskip \noindent
+%
+{\bf Summary:} The subject of this assignment is a problem from \cite{KK09} in Chapter 8 under section 2. A pdf copy of a scan of the problem is included in the D2L module for program 4. The document goes through the derivation of a differential equation that models the draining of water from a spherical tank. The final result of the derivation is:
+\begin{equation}
+\frac {dh}{dt} = \frac {-d^2 \sqrt{2gh}}{4(hD-h^2)},
+\label{e:drain_ode}
+\end{equation}
+where d is the diameter of the hole in the bottom of the tank, g is the acceleration due to gravity, h is the height of the water in the tank, and D is the diameter of the tank. 
+\par \bigskip \par \noindent
+In this assignment, you are to construct a MATLAB program that takes the input of the initial height of the water, the time the tank is allowed to drain, and the diameter of the hole. 
+
+
+Your program will specifically have the following format: \par \medskip
+function [flag, H] = progd\#\#\#\#\#\#(h0,T,d), \par \medskip \noindent
+%
+where the file name is progd followed by your six digit Math 373 student number  followed by ".m" to make it an m-file. The $h0$ is the initial height of the water given in meters, the $T$ is the length of time the tank is allowed to drain (measured in minutes), and $d$ is the diameter of the hole in the bottom of the tank measured in centimeters. You can design your program with fixed values of D and g to be 6 meters and 9.81 $\ds m/s^2$ respectfully. 
+
+The flag variable indicates a successful run, or a run that has some kind of error. The other output variable is H, which is the height of water left in the tank at time T. If the program runs without an issue then flag = 0. You can assume the user will provide numeric input for each variable. Your program should check that the values of h0 and d are feasible and if these values are not feasible then flag = 1 and H = -99. In addition, T must be greater than zero and if T is not greater than zero then flag = 1 and H = -99. Lastly, if T is a time that is beyond the length of time it takes to empty the tank then flag = 2 and H = 0. 
+
+Please include a discussion in your report on how you validated that your program is producing an accurate calculation. How long does it take the tank to empty when d is 4.95 cm and the initial height of the water is 5 meters? How do you check if T is too large? You can use an adaptive solver from MATLAB to help solve the initial value problem, or you can employ a fixed point method. You should fully describe the benefits and dangers with your design choices. If the user input results in a feasible solution then your program should also plot the resulting solution that shows the height in meters for every step of time. Your plot should include sufficient labeling. Please note your program should only return the output variables along with the plot (when appropriate) and should not output or print anything else. 
+
+
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{KK09} {\sc Autar Kaw} and {\sc E. Eric Kalu}, {\it Numerical Methods with Applications (2nd ed.)}, 2009. Website: \href{http://autarkaw.com/books/numericalmethods/index.html}{book website} .
+
+\bibentry{KR21} {\sc Kyle Riley}, Class Lecture, Math 373: Introduction to Numerical Analysis, Lecture, August 2021. 
+\endrefs
+\par \bigskip \noindent
+
+
+\end{document}

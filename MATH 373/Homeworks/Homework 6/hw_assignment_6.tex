@@ -1,0 +1,250 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% hw_assignment_6.tex
+% July 1, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor,enumitem}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Homework Assignment 6} 
+ \medskip \par
+
+% -----------------------------------------------------
+{\bf Section 1 Boundary Value Problems}  \\
+%
+Question 1.A: Outline the key components of the shooting method. What changes can be made to help improve the accuracy of a shooting method solver? 
+\par \medskip \noindent 
+%
+Question 1.B: Outline the key components of the finite differences method. What changes can be made to help improve the accuracy of the finite differences method? 
+\par \medskip \noindent 
+%
+Question 1.C: Consider the following boundary value problems and identify if the shooting method and/or the finite differences method can be used to solve the given problem.  If neither method can be used then please state neither and also explain your answer. 
+
+\begin{itemize}
+\item $\ds y'' + y' - 2y = t^2; \ \ y(0)=4 \ {\rm and}\ \ y(3)=-1$
+\item $\ds y'' + y' - 2y = t^2; \ \ y'(0)=1 \ {\rm and}\ \ y'(3)=-2$
+\item $\ds y'' + y'y = \sin (t); \ \ y(0)=3 \ {\rm and}\ \ y(4)= 1$
+\item $\ds y'' + y'y = \sin (t); \ \ y(0)=3 \ {\rm and}\ \ y'(4)= 1$
+\item $\ds y'' + y'y = \sin (t); \ \ y'(0)=3 \ {\rm and}\ \ y'(4)= 1$
+\item $\ds y'' + 2 y' + 6 y = e^t; \ \ y(1)=2 \ {\rm and}\ \ y(5)= -1$
+\item $\ds y''' + 2 y'' + 6 y = e^t; \ \ y'(0)=2 \ {\rm and}\ \ y(5)= -1$
+\item $\ds y'' + 2 y'y = e^{-t} \ \ y'(0)=2 \ {\rm and}\ \ y'(1)= -1$
+\item $\ds y'' + 2 y'y = e^{-t} \ \ y(0)=2 \ {\rm and}\ \ y(1)= -1$
+\end{itemize}
+\par \medskip \noindent 
+%
+Question 1.D: Use finite difference using the centered difference approximation for each derivative for the following BVP
+$$y'' + 2y' + 6y = t^2 + 1, \ \ y'(0)=1, {\rm and} \ \ y'(2) = 2.$$
+\par \medskip \noindent 
+%
+Question 1.E:  Use finite difference using the centered difference approximation for the second derivative and the forward difference for the first derivative for the following BVP
+$$y'' - 3y' + 6y = t^2 + 1, \ \ y(0)=3, {\rm and} \ \ y(1) = 5.$$
+\par \medskip \noindent 
+%
+Question 1.F: Use Matlab to solve the problems in 1.D and 1.E using the step sizes of 0.1 and 0.05. Can shooting method be used to solve either 1.D or 1.E?
+\par \medskip \noindent 
+%
+Question 1.G: Formulate the matrix solution to 1.E using centered difference for the second derivative and backward difference for the first derivative. 
+\par \bigskip \par
+{\bf Section 2 Linear Systems}  \\
+You can find reference to solving linear systems in Chapter 4 of \cite{KK09} \\
+%
+Question 2.A:  Describe the differences between Gaussian Elimination with Back Substitution versus the Gauss-Jordan Method. 
+\par \medskip \noindent 
+%
+Question 2.B:  What are the possible outcomes to solving a linear system $\ds A\vec x = \vec b$, please be as complete as possible in your answer.
+\par \medskip \noindent 
+%
+Question 2.C: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+    4y + z &= 20 \cr 
+    2x - 2y + z &= 0 \cr
+    x + z &= 5
+\end{align*}
+(If no solutions exist then please state that outcome.)
+\par \medskip \noindent 
+%
+Question 2.D:  Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+    2x + z + w &= 5 \cr 
+    y - w&= -1 \cr
+    3x - z - w &= 0\cr
+    4x + y + 2z + w &=9
+\end{align*}
+(If no solutions exist then please state that outcome.)
+\par \medskip \noindent 
+%
+Question 2.E:  Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+    -3x - 3y &= 1 \cr 
+      x + y &= -1
+\end{align*}
+(If no solutions exist then please state that outcome.)
+\par \medskip \noindent 
+%
+Question 2.F:  Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+    x + z + w &= 3 \cr 
+    y + w&= -1 \cr
+    2x - y +2z + w &= 7\cr
+    x + 2y + z + 3w &=1
+\end{align*}
+(If no solutions exist then please state that outcome.)
+\par \medskip \noindent 
+%
+Question 2.G: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     y - 2w &= 1 \cr 
+    x + y + z  &= 4 \cr
+    x + 3y + z  -4w &= 6\cr
+    x + 2y + z - 2w &= 3
+\end{align*}
+(If no solutions exist then please state that outcome.) 
+\par \medskip \noindent 
+%
+Question 2.H: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     x + y - 2z &= -1 \cr 
+    x - y -3z  &= 0 \cr
+    x - 3y -5 z  &= 0 
+\end{align*}
+(If no solutions exist then please state that outcome.) 
+\par \medskip \noindent 
+%
+Question 2.I: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     x + y - 2z &= 3 \cr 
+    x - y -3z  &= 1 \cr
+    x - 3y -4 z  &= -1 
+\end{align*}
+(If no solutions exist then please state that outcome.) 
+\par \medskip \noindent 
+%
+Question 2.J: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     x + y - 2z &= -3 \cr 
+    x - y -3z  &= 1 \cr
+    x - 3y -4 z  &= 0 
+\end{align*}
+(If no solutions exist then please state that outcome.) 
+\par \medskip \noindent 
+%
+Question 2.K: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     x + 3z &= -2 \cr 
+    -5 x + 2y - z  &= 0 \cr
+    3x - y + 6z  &= -1 
+\end{align*}
+(If no solutions exist then please state that outcome.)
+\par \medskip \noindent 
+Question 2.L: Describe all possible solutions using Gaussian Elimination to:
+\begin{align*}
+     2x + y = 4 \cr 
+    2 x + y - z  &= -1 \cr
+    y + z  &= 8 
+\end{align*}
+(If no solutions exist then please state that outcome.) 
+\par \bigskip \noindent 
+%
+{\bf Section 3 Numerical Techniques for Solving Linear Systems}\\
+\\
+%
+Question 3.A:  Describe what is meant with Gaussian Elimination with partial pivoting and discuss why partial pivoting would be necessary. 
+\par \medskip \noindent 
+%
+Question 3.B:  Define the condition number for a matrix and explain what the implications of a condition number might mean for solving a linear system.  Is it desirable to have a small or large condition number?
+\par \medskip \noindent 
+%
+Question 3.C: What are the advantages to using the Matlab function of A\textbackslash b to solve a linear system instead of using $\ds A^{-1}b$? Please be as complete as possible in your answer. Are there any circumstances where it is more advantageous to use $\ds A^{-1}$?
+\par \medskip \noindent 
+%
+Question 3.D:  Use three iterations of Gauss-Seidel with initial guess of [1; 2; 3;] for the system:
+\begin{align*}
+    12x + 7y + 3z &= 17 \cr 
+    3x + 6y + 2z  &= 9 \cr
+    2x + 7y - 11z &= 49
+\end{align*}
+Use Matlab to solve this system and compute the absolute relative error between the Gauss-Seidel approximation and the exact solution. 
+\par \medskip \noindent 
+%
+Question 3.E: Give the definition of a singular linear system and a nonsingular system. Please describe how one can identify if a system is singular or nonsingular. 
+%
+\par \bigskip \noindent 
+{\bf Section 4 Extra Questions}\\
+\par \medskip \noindent 
+Question 4.A: State the definition of local truncation error for solving a differential system
+$$\frac {d\vec w}{dt} = \vec F(t,\vec w), \ \ \vec w(0)=\vec w_0.$$
+\par \medskip \noindent 
+Question 4.B: State the definition for order of convergence for a numerical method solving a system. In this case, the output of the method involves vectors, $\ds \vec w_k$ converging to a solution $\ds \vec w$, i.e., $\ds \vec w_k \rightarrow \vec w$ as $k\rightarrow \infty$.
+\par \medskip \noindent 
+Question 4.C: Explain the link between finding eigenvalues and the root finding methods that were covered early in the course. 
+\par \medskip \noindent 
+Question 4.D: Use Matlab to compute the condition number for the system:
+\begin{align*}
+    x + y + z &= 2\cr 
+    x + 2z  &= 1 \cr
+    2x + y + 3.0001z &= 3.0001
+\end{align*}
+Interpret what the condition number might mean for solving this system. 
+% Add references here, list alphabetically according to last name of primary author.
+
+\section*{References}
+\beginrefs
+
+\bibentry{KK09} {\sc Autar Kaw} and {\sc E. Eric Kalu}, {\it Numerical Methods with Applications (2nd ed.)}, 2009. Website: \href{http://autarkaw.com/books/numericalmethods/index.html}{book website} .
+
+\bibentry{Matlab} {\sc Matlab website}, \href{https://www.mathworks.com}{www.mathworks.com}, August 2019. % put exact and full link in the first listing right after href
+
+\endrefs
+\end{document}

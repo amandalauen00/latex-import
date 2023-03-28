@@ -1,0 +1,94 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Spring 2021
+% program_0.tex
+% December 17, 2020
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%adjust to 1 in margins
+  \addtolength{\oddsidemargin}{-.875in}
+   \addtolength{\evensidemargin}{-.875in}
+    \addtolength{\textwidth}{1.75in}
+
+    \addtolength{\topmargin}{-.875in}
+    \addtolength{\textheight}{1.75in}
+	
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Program 0} \par \medskip \noindent
+%
+{\bf Summary:} This is a practice program that will introduce the format and expectations of future programming assignments.  
+\par \bigskip \par \noindent
+The goal of this assignment is to construct a simple MATLAB program that calculates the Taylor Polynomial of degree $n$ associated with $\ln(x)$ centered at $\ds x_0$. Your program will specifically have the following format: \par \medskip
+function [flag, approx, rel]= progz\#\#\#\#\#\#(x0,x,n) \par \medskip \noindent
+%
+where the file name is progz followed by your six digit Math 373 student number  followed by ".m" to make it an m-file. The $\ds x_0$ input variable is the center for the Taylor Polynomial expansion, $x$ is the point of approximation, and $n$ is the degree of the polynomial. You can assume that the user will be inputting in real numerical values for $x$ and $\ds x_0$ and the input for $n$ will be assumed positive. The output includes three variables: flag, approx, and rel. The flag output signifies if the method ran correctly or not with flag=0 implying the program completed without error, but flag = 1 implies that the program finished with an error. Please use flag = 2 to signify the method diverged. The output variable of approx is the approximate value calculated by the program and the rel output variable is the calculation of the absolute relative error. Please remember that MATLAB does require return values for each of the output variables and so any time there is a flag = 1 assigned then the variables approx and rel will need some assigned value. If it is not possible to calculate relative error then please return the value of rel = -1. If it is not possible to make a computation for the approximation then please return approx = -666. Please also discuss how you validated that your numerical method was producing an accurate calculation. 
+
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{Matlab} {\sc Matlab website}, \href{https://www.mathworks.com}{www.mathworks.com}, August 2019. % put exact and full link in the first listing right after href
+
+\endrefs
+
+
+
+\end{document}

@@ -1,0 +1,125 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% program_3.tex
+% June 9, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Program 3} \par \medskip \noindent
+%
+{\bf Summary:} The idea of this project comes from Chapra \cite{CC10}. The calculation of work is something that students have worked with across several classes and many are familiar with the formula $W = Fd$ where work is the product of force times distance. If force varies with location then the formula evolves to 
+\begin{equation}
+ W = \int_a ^b F(x) \ dx,
+ \label{e:work_int}
+\end{equation}
+where F(x) is the magnitude of the force in the direction of the movement at position x. Thus, the total work done to move from x=a to x=b is given by (\ref{e:work_int}). The complication introduced by Chapra is if the angle of the force varies with the direction of movement, which means both the magnitude of the force and the direction it has with the direction of movement varies. The complication results in the formula:
+\begin{equation}
+W = \int_a^b F(x) \ \cos (\theta(x)) \ dx, 
+\label{e:work_int2}
+\end{equation}
+where F(x) is the magnitude of the force and $\theta (x)$ is the angle (in radians) the force makes with the direction of movement at position $x$. It follows that when $\theta = 0$ then the force and the movement are aligned and when $\ds \theta = \frac {\pi}2$ then the force and movement are perpendicular. 
+\par \bigskip \par \noindent
+In this assignment, you are to construct a MATLAB program that takes the input of vectors that contain the position, force magnitude, and angle the force makes with the direction of movement. Your program will take this information and numerically integrate an approximation for the total work done by the force. Your program will specifically have the following format: \par \medskip
+function [flag, approx] = progc\#\#\#\#\#\#(x,F,theta), \par \medskip \noindent
+%
+where the file name is progc followed by your six digit Math 373 student number  followed by ".m" to make it an m-file. The $x$ is a vector that contains the position information, the $F$ is the force magnitude information, and theta is a vector that contains the angle made between the force and the direction of movement. The listing for each vector is in order of position, which means the third element in x is the third element in position, the third element in F is the associated magnitude of the force for the third position, and the third element of theta is the size of the angle between the force and the direction of movement. You can assume in your design that numeric data is the input for all three vectors and that $x$ is arranged in a strictly increasing order, but $x$ does not necessarily have uniform spacing. A sample set of data can be found in Table \ref{t:example_data}. 
+
+The flag variable indicates a successful run, or a run that has some kind of error. Your program should check that all three vectors have the same number of elements (i.e., the vectors are the same length) and every entry for any of the elements must be nonnegative. Violations of these input restrictions should result in flag = 1 and approx = -99. If it is possible to use Simpson's 3/8 rule then the program should have first preference of calculating using the 3/8 rule and the associated flag should be flag = 2. If Simpson's 3/8 rule cannot be used then the program should use the Trapezoidal Rule and the flag should be flag = 3.
+
+Please include a discussion in your report on how you validated that your program is producing an accurate calculation. Is it possible to have an approximation that is negative? If it is possible to have a negative approximation value then what would that imply?  Lastly, please note your program should only return the output variables and should not output or print anything else. 
+
+\begin{table}[ht]
+    \centering
+     \begin{tabular}{|l|c|c|}
+      \hline
+      position & Force Magnitude & angle\\
+      (meters) & (Newtons) & (radians) \\
+      \hline
+      0 & 0 & 0.5 \\
+      \hline
+      5 & 9.0 & 0.6 \\
+      \hline
+      10 & 12.1 & 0.75 \\
+      \hline
+      15 & 13.7 & 0.8 \\
+      \hline
+      20 & 14.2 & 1.2 \\
+      \hline
+      25 & 14.4 & 1.5 \\
+      \hline
+      30 & 17.1 & 1.62 \\
+      \hline
+    \end{tabular}
+    \caption{Example of data for program 2}
+    \label{t:example_data}
+\end{table}
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{CC10}{\sc Steven Chapra} and {\sc Raymond Canale}, {\it Numerical Methods for Engineers (6 ed.)}, 2010.
+
+\bibentry{KR21} {\sc Kyle Riley}, Class Lecture, Math 373: Introduction to Numerical Analysis, Lecture, August 2021. 
+\endrefs
+\par \bigskip \noindent
+
+
+\end{document}

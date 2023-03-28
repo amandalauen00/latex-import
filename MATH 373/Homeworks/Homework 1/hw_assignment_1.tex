@@ -1,0 +1,215 @@
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% hw_assignment_1.tex
+% July 1, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Homework Assignment 1} 
+
+{\bf Summary:} {\color{red} For the homework assignments it is allowed to collaborate with fellow students, tutors, the instructor, and any other resource as long as you appropriately cite your source. (anything you copy should be clearly identified and attributed to the proper source)  } 
+\par \bigskip \par \noindent
+%
+% -----------------------------------------------------
+
+{\bf Section 1.1} out of \cite{LB16} \\
+Problems: 1,  2,  3,  4,  6, and 12 \\
+Use Matlab to solve problems: 7, 9, 10, 11, and 19 \par \medskip \noindent
+%
+Question 1.A: Ideally, a numerical method converges toward the exact answer of mathematical problem. However, in reality there are several different issues that can arise. A lack of consistency could mean that the method converges, but not to the solution to the mathematical problem. Describe how a person can check to make sure the method they have is being consistent. \medskip \par \noindent
+%
+Question 1.B: The book and notes  do reference the accumulation of error. Describe what can cause accumulation of error and what can be done to mitigate this issue. \medskip \par \noindent
+%
+Question 1.C: What is the advantage of using relative error versus using absolute error. When is it more advantageous to use absolute error?  \medskip \par \noindent
+%
+Question 1.D: What are the differences between algorithmic error and floating point error?  \medskip \par \noindent
+Question 1.E: Are percentage error and absolute relative error the same thing?\par \bigskip \par
+% -----------------------------------------------------
+{\bf Section 1.2} out of \cite{LB16} \\
+Problems: 2, 3, 4, 5, 7, 14, 16, 21, and 23 \\
+Use Matlab to solve problems: 1, 8, 10, and 26
+
+\par \medskip \noindent
+%
+Question 2.A: In another book, one can find the expression for the Taylor's Polynomial as: \\
+$\ds T_n(x) = \sum_{j=0}^n \biggr ( \frac {f^{(j)}(x)}{j!}(x-x_0)^j \biggr )$  \\
+Is the expression above equivalent to the definition ([LB16]) in the book given in section 2?  Please explain your answer. \medskip \par \noindent
+%
+Question 2.B: In a Taylor Polynomial approximation, the actual function is not known and that certainly means that $\ds f^{(n)}(x)$ is not known. However, suppose it can be determined that  $\ds \vert f^{(n)}(x)\vert $ is decreasing over the interval that contains $x_0$ and $x$. Explain how the status of a decreasing $\ds \vert f^{(n)}(x)\vert $ would help in coming up with an error bound estimate for a Taylor's Polynomial of degree $n-1$.   \medskip \par \noindent
+%
+Question 2.C: In the remainder term, \\
+$\ds R_n(x) =  \frac {f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1} $,  \\
+the theorem guarantees that $\xi$ is in between $x$ and $\ds x_0$. Does the theorem apply if $\ds x>x_0$, or $\ds x<x_0$, or both cases? Please explain your answer. 
+\medskip \par \noindent
+%
+Question 2.D: The remainder term, $R_n(x)$  is often called the error term since it contains the error between $f(x)$ and $\ds T_n(x)$. Review the mathematical expression of $\ds R_n(x)$ and describe the elements that drive convergence of $\ds T_n(x)$ to $f(x)$ (there should be three different features to discuss).
+\par \bigskip \par
+% -----------------------------------------------------
+{\bf Section 1.3} out of \cite{LB16} talks about convergence\\  \par \medskip \noindent
+ 
+\par \medskip \noindent
+%
+Question 3.A: Use Matlab to numerically estimate the rate of convergence of the sequence \par
+a) $\ds \frac {n^2}{1+n^2} \rightarrow 1$ \par
+b) $\ds \frac {n!}{n^n} \rightarrow 0$ \par
+c) $\ds (1 + \frac 1n)^n \rightarrow e$ \par
+d) $\ds \frac {1 + \cos (5n)}{n^3 + 1} \rightarrow 0$ \par
+e) $\ds \lim_{h \rightarrow 0}\frac {h^2 + \cos (h) - e^h}h = -1$
+. \medskip \par \noindent
+%
+Question 3.B: Consider the sample program of pracs1.m that runs an algorithm to compute partial sums of the series $\ds \sum_{k=1}^{\infty} \frac 1{k^2}$. The program takes input of the tolerance and the maximum number of iterations (or the length of the sub-series). \par
+a) What is the implication of the stopping tolerance? Does the stopping tolerance represent absolute error?  Explain what the stopping tolerance represents. \par
+b) If we pick stopping tolerance of $\ds 0.001$ then what does that mean and how is it related to absolute error? \par
+c) It turns out the exact value of this series is $\ds \frac {\pi ^2}6$. Use this fact to numerically estimate convergence. 
+  \medskip \par \noindent
+%
+Question 3.C: The program of pracs2.m is a function that converts Celsius to temperature measured in Fahrenheit. Write a program the converts Fahrenheit to Celsius. Describe how you would test this program. 
+\medskip \par \noindent
+%
+Question 3.D: Consider the process of using IEEE single precision format to convert binary to a decimal number. For this problem, s = 1 the 8 bits for the exponent are given by
+
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+1 & 0 & 0 & 0 & 1 & 0 & 0 & 1\\
+\hline
+\end{tabular}
+
+and the 23 bits for the mantissa are \par \noindent
+ \begin{tabular}{|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|c|}
+\hline
+0 & 1 & 0 & 0 & 1 & 1 & 0 & 0 & 0 & 0 &  0 & 0& 0  & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+\hline
+\end{tabular}. Use this information to compute the decimal version of this number. 
+\medskip \par \noindent
+%
+Question 3.E: In the notes, the discussion mentions that the mantissa is really the keeper for the number of significant digits stored in a machine number. Explain the connection between significant digits and the mantissa. 
+\medskip \par \noindent
+%
+Question 3.F: What is machine epsilon and how does it relate to machine arithmetic?
+\medskip \par \noindent
+%
+Question 3.G: In some cases a numerical software package will give the message of: overflow, what is overflow and what does it imply in terms of computing?
+%
+\bigskip \par \noindent
+%
+{\bf Additional questions}. \medskip \par \noindent
+%%%%%%%%%%%%%%%%%%%%%
+{\bf Section 4: Calculator Practice}
+\medskip \par \noindent
+It is useful to clarify the use of the calculator so things are clear on exams. A non-graphing calculator is allowed on exams and will be needed to do some of the calculations. This section is a good opportunity to practice with your calculator so work done on exams is done correctly. \medskip \par \noindent
+Question 4.A: Recall that $e \approx 2.718281828$. 
+\begin{itemize}
+    \item Find the approximation to $e$ that is accurate to the nearest 0.001. (Multiple choice: 2.718, 2.719, 2.717, or 2.71830
+    \item Find the approximation that is accurate to the nearest 0.0001. (Multiple choice: 2.718, 2.7182, 2.7183, or 2.71828)
+\end{itemize}
+\medskip \par \noindent
+Question 4.B: Consider $\ds f(x) =\frac {e^x - e^{-x}}x$
+\begin{itemize}
+    \item Calculate $f(0.1)$ accurate to the nearest 0.001. Multiple choice (2, 2.003, 2.0033, or 2.002)
+\end{itemize} \medskip \par \noindent 
+Question 4.C: Consider $\ds g(x) = \frac {x\cos(x) - \sin(x)}{x-\sin (x)}$
+\begin{itemize}
+    \item Calculate $g(0.1)$ accurate to the nearest 0.0001. Multiple choice (-1.5, -1.999, -1.9999, -2, or 1)
+\end{itemize}
+\par \medskip \noindent
+Question 4.D: Consider example 5.13 from \cite{JR13} where radiation heat flux for a boiler tube is calculated from
+$$q = \epsilon  \sigma (T^4_F - T^4_S),$$
+where $\epsilon$ is emissivity of the surface of the boiler with $\epsilon = 0.9$, $\sigma$ is the Stefan-Boltzmann constant with $\ds \sigma = 1.355 \times 10^{-12} \ \frac {{\rm cal}}{s*{\rm cm}^2 \ {\rm K}^4}$, $\ds T_F = 3300 \ ^o{\rm F}$ is the furnace temperature, and $\ds T_S = 3000 \ ^o{\rm F}$ is the temperature of the surface of the boiler tube. Use Matlab and the given information to calculate q. 
+\begin{itemize}
+    \item Multiple choice: 45.8436, 45.8436 $\ds \frac {{\rm cal}}{s*{\rm cm}^2} $, 45.8436 cal, 6.5679, 6.5679 $\ds \frac {{\rm cal}}{s*{\rm cm}^2} $, or 6.5679 cal. 
+\end{itemize}
+\par \medskip \noindent
+Notes on working your calculator
+\begin{itemize}
+    \item Keep all your calculations in your calculator with as much storage as possible and round ONLY at the end.
+    \item Make sure you use radian measure for trigonometry functions, unless otherwise directed.
+    \item {\bf Make sure units of measure match}.
+    \item Be sure to list the units for anything that has a specific unit of measure.
+    \item Nearest 0.001 is a specific value. 
+    \item If in doubt list as many digits as possible in final answer. 
+\end{itemize} \par \medskip \noindent
+%%%%
+Question 5: The sample program of pracs3.m implements the computation of the Maclaurin Polynomial
+for the function $\ds f(x) = x^4-2x^2+x-3$. Adjust this program to calculate the Maclaurin Polynomial for $\ds g(x)=\frac 13 x^5 - x^3+\frac 12 x^2 + x +1$.  
+\medskip \par \noindent
+%
+Question 6: The sample program of pracs3.m implements the computation of the Maclaurin Polynomial for the function $\ds f(x) = x^4-2x^2+x-3$. Adjust this program to calculate the Maclaurin Polynomial for $h(x) = \cos (x)$.
+\medskip \par \noindent
+%
+Question 7: What are the rules of thumb discussed in class that can increase error due to machine round off? 
+
+\par \bigskip \par
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{CC10}{\sc Steven Chapra} and {\sc Raymond Canale}, {\it Numerical Methods for Engineers (6 ed.)}, 2010. 
+
+\bibentry{KK09} {\sc Autar Kaw} and {\sc E. Eric Kalu}, {\it Numerical Methods with Applications (2nd ed.)}, 2009. Website: \href{http://autarkaw.com/books/numericalmethods/index.html}{book website} .
+
+\bibentry{Matlab} {\sc Matlab website}, \href{https://www.mathworks.com}{www.mathworks.com}, August 2019. % put exact and full link in the first listing right after href
+
+\bibentry{JR13}{\sc James Riggs}, {\it Computational Methods for Engineers with Matlab applications}, 2013. 
+
+\endrefs
+
+
+
+\end{document}

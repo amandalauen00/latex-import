@@ -1,0 +1,186 @@
+
+% ===============================================
+% MATH 373: Intro to Numerical Analysis           Fall 2021
+% hw_assignment_3.tex
+% July 1, 2021
+% ===============================================
+
+\documentclass{article}
+
+% load packages
+\usepackage{amsmath,amsfonts,graphicx,amsthm,amssymb,hyperref,xcolor}
+
+% Define default environments
+\newenvironment{theorem}[2][Theorem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{lemma}[2][Lemma]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{claim}[2][Claim]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{problem}[2][Problem]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{proposition}[2][Proposition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{corollary}[2][Corollary]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+
+%
+% Convention for citations is authors' initials followed by the year.
+% For example, to cite a paper by Leighton and Maggs you would type
+% \cite{LM89}, and to cite a paper by Strassen you would type \cite{S69}.
+% (To avoid bibliography problems, for now we redefine the \cite command.)
+% Also commands that create a suitable format for the reference list.
+\renewcommand{\cite}[1]{[#1]}
+
+\def\beginrefs{\begin{list}%
+        {[\arabic{equation}]}{\usecounter{equation}
+         \setlength{\leftmargin}{2.0truecm}\setlength{\labelsep}{0.4truecm}%
+         \setlength{\labelwidth}{1.6truecm}}}
+\def\endrefs{\end{list}}
+\def\bibentry#1{\item[\hbox{[#1]}]}
+
+
+% Define Shortcuts
+\def\ds{\displaystyle}
+
+\begin{document}
+
+
+
+% ------------------------------------------ %
+%                 START HERE             %
+% ------------------------------------------ %
+
+\large
+
+{\Large Math 373, Introduction to Numerical Analysis}
+
+
+{\Large Homework Assignment 3} 
+
+{\bf Summary:} {\color{red} The goal of assignments is to learn the material, which means it is fine to collaborate with fellow students and any other resource as long as you appropriately cite your source.} 
+\par \bigskip \par
+
+
+% -----------------------------------------------------
+
+{\bf Section 2.1 Bisection Method} \par \medskip \noindent
+Problems from \cite{LB16} (use Matlab where appropriate): 1, 2, 3 a) c) g) i), 4, 5 a), 11, 12, and 19   
+\par \medskip \noindent
+%
+Question 1.A: Describe the rate of convergence for the Bisection Method.   
+\medskip \par \noindent
+%
+Question 1.B: The Bisection Method is known as a robust method. What could this mean compared to the Fixed Point Method, Newton's Method, and Secant Method?
+\medskip \par \noindent
+%
+Question 1.C: Is there a way to speed up the Bisection Method?
+
+\medskip \par \noindent
+%
+Question 1.D: In programming Bisection Method as a Matlab function file, how would you use program flags for the Bisection Method? What inputs would result in the Bisection Method not working and what flags would you need to design into the program?
+\medskip \par \noindent
+%
+\par \bigskip \par
+% -----------------------------------------------------
+{\bf Section 2.2 Fixed Point Method} \\
+\medskip \par \noindent
+Problems from \cite{LB16} (use Matlab where appropriate): 4 a), b), c), d), 5 a), b), c), 9, 15
+\par \medskip \noindent
+%
+Question 2.A: In proposition 3 one of the criteria listed is: $\ds h([a,b]) \subseteq [a,b]$. What does this notation imply and how could a person test if a function meets this criteria?
+
+ \medskip \par \noindent
+%
+Question 2.B: Theorem 4 states conditions that results in a guarantee that there is convergence. On the other hand, if $\ds \vert f ' (\hat x) \vert > 1$ then does that guarantee no convergence?  
+ \medskip \par \noindent
+%
+Question 2.C: What should be the stopping criteria for a programming implementing the Fixed Point Method?
+\medskip \par \noindent
+%
+Question 2.D: If the Fixed Point Method was implemented in a Matlab program then what flags should be included into the program? 
+
+\par \bigskip \par
+% -----------------------------------------------------
+{\bf Section 2.4 Newton's Method and Secant Method} \\  \par \medskip \noindent
+
+\par \noindent
+Problems from \cite{LB16} (use Matlab where appropriate): 5 a), b), c), d), 6 a), b), c), d), 8, 11
+\par \medskip \noindent
+%
+Question 4.A: Answer problem 17 from \cite{LB16} in section 2.4. 
+\medskip \par \noindent
+%
+Question 4.B: Answer problem 23 with parts a) b) and c) from \cite{LB16} in section 2.4. 
+  \medskip \par \noindent
+%
+Question 4.C: The big advantage that Newton's Method has is the potential to deliver quadratic convergence. State the mathematical definition of quadratic convergence and also describe how to spot quadratic convergence numerically. 
+  
+\medskip \par \noindent
+%
+Question 4.D: Secant Method has the potential to deliver super linear convergence. Super linear convergence is better than linear convergence, but not as fast as quadratic convergence. Discuss the definitions of linear convergence and quadratic convergence and use this information to speculate on how to define super linear convergence.   
+
+\medskip \par \noindent
+%
+Question 4.E: True or False: Newton's Method always generates quadratic convergence. (Please explain your answer.)  
+
+\medskip \par \noindent
+%
+Question 4.F: True or False: Secant Method always generates super linear convergence. (Please explain your answer.)  
+
+\medskip \par \noindent
+%
+{\bf Additional questions}. \medskip \par \noindent
+Question 5: Recall in the notes (lecture 5) the problem from \cite{KK09} of the floating ball. The goal of that problem was attempting to determine how much of the ball would remain under the surface of the water. The end result of the derivation was solving the equation:
+\begin{equation}
+4(0.055)^3(0.6)-3x^2(0.055)+x^3=0.    
+    \label{e:nonlinear_sample_1}
+\end{equation}
+Use one of the methods to find the root to (\ref{e:nonlinear_sample_1}) accurate to 0.0001. 
+\medskip \par \noindent
+Question 6: How do you know if the approximation you developed in question 5 is accurate to 0.0001?   
+\medskip \par \noindent
+Question 7: How do you know if the answer found in question 5 solves the physical problem?
+\medskip \par \noindent
+Question 8: One reference that is good for finding applications is \cite{AM96}. In this source it reference an equation related to modeling fluid flow through a pipe:
+$$\frac {8fL}{\pi^2 g D^5}Q^3 + hQ - \frac {550 \ eh_p}{\gamma} =0,$$
+where f is the friction coefficient of the pipe, L is the length of the pipe, g = gravitational acceleration, D is diameter of the pipe, $Q=VA$ with V being flow velocity and A being cross sectional area, h=potential head, e=efficiency of the pump, $h_p$=horsepower of the pump, and $\gamma$ is specific weight of the fluid. Consider the case L is 800 feet, f is 0.0185, diameter of the pipe is 6 inches, h is 5 feet, the pump has 6 horsepower with efficiency coefficient of 0.6, and the specific gravity of the fluid is 0.82 (this translates into $\gamma = 0.82*62.4$). Use this information and one of the techniques in chapter 2 of \cite{LB16} to estimate Q accurate to 0.001. 
+\medskip \par \noindent
+Question 9: How do you know if the answer in problem 8 is a solution to the given problem? (Be sure to explain.)
+
+\par \bigskip \par
+
+Question 10: Consider the function $\ds h(x)=10-\cosh(x)$
+
+a) MATLAB does have a root solver program that can be implement with the following:
+\begin{verbatim}
+>> h = @(x)10-cosh(x);
+>> exact  = fzero(h,1.5);
+   \end{verbatim} 
+   
+b) Using the solution from part a) as representing the exact answer. Use MATLAB and Newton's Method with initial guess of $x_0$ to approximate the solution to $h(x)$. Use the output to plot iteration count versus $\log \vert {\rm exact}-x_k \vert$. \smallskip \par
+
+c) Does the plot in part b) reveal anything regarding convergence?  \smallskip \par
+
+
+d) Compare convergence plot of Newton's Method to Bisection Method where Bisection Method starts with the interval [1.5, 3.5]. 
+
+% Add references here, list alphabetically according to last name of primary author.
+\section*{References}
+\beginrefs
+
+\bibentry{AM96}{\sc Bilal Ayyub} and {\sc Richard McCuen},
+{\it Introduction to Numerical Analysis (2nd ed.)}, 1996. 
+
+\bibentry{LB16}{\sc Leon Brin},
+{\it Tea Time Numerical Analysis (Experiences in Mathematics)  (2nd ed.)}, 2016. Website: \href{http://lqbrin.github.io/tea-time-numerical/}{lqbrin.github.io/tea-time-numerical} .
+
+\bibentry{KK09} {\sc Autar Kaw} and {\sc E. Eric Kalu}, {\it Numerical Methods with Applications (2nd ed.)}, 2009. Website: \href{http://autarkaw.com/books/numericalmethods/index.html}{book website} .
+
+\endrefs
+
+
+
+\end{document}
