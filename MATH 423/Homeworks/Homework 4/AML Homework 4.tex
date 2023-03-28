@@ -1,0 +1,395 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{xcolor}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#4
+
+Assigned: September 21, 2022
+
+Due: September 28, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\item  Prove the following limits using the definition of convergence.  You can show your Step $0$, in which you calculate the correct $N$ and $\varepsilon$, or you can state those values in Step $2$ and appear amazing.  Either way, you need to include a full proof, like we do in class.
+
+	\begin{enumerate}
+	
+	\item  ~[Griffith, B.] $\lim \frac{1}{6n^2+1}$
+ \begin{proof}
+     
+     Step 0: In general, we need $|\frac{1}{6n^2+1}-0|<\epsilon$ or $|\frac{1}{6n^2+1}| < \epsilon$
+     
+     
+     \begin{center}
+     $\frac{1}{6n^2+1} < \epsilon$
+
+     $1 < \epsilon * (6n^2+1)$
+     
+     $\frac{1}{\epsilon} < (6n^2+1)$
+     
+     $\frac{1}{\epsilon}-1 < 6n^2$
+     
+     $\frac{\frac{1}{\epsilon}-1}{6} < n^2$
+
+     $\sqrt{\frac{\frac{1}{\epsilon}-1}{6}}< n$
+
+     $\sqrt{\frac{\frac{1-\epsilon}{\epsilon}}{6}} < n$
+
+     $\sqrt{\frac{1-\epsilon}{6\epsilon}} < n$
+
+     $\frac{\sqrt{1-\epsilon}}{\sqrt{6\epsilon}} < n$
+     
+     $\frac{1}{\sqrt{6\epsilon}} < n$
+
+     \end{center}
+    
+     Step 1: Let $\epsilon > 0$.
+     
+     Step 2: Let's choose $N > \frac{1}{\sqrt{6\epsilon}}$.  Then $n > N$ implies that $n >\frac{1}{6\epsilon}$ or $\sqrt{6\epsilon} > \frac{1}{n}, \epsilon > \frac{1}{6n^2}$.  But $6n^2<6n^2+1$, so $\frac{1}{6n^2}>\frac{1}{6n^2+1}$.  Since $|\frac{1}{6n^2+1}-0|=\frac{1}{6n^2+1}$, we have shown that for $n > N, |\frac{1}{6n^2+1}-0|<\epsilon$, which proves that the limit is 0.Notice that we can make our lives somewhat simpler if we use $6n^2 < 6n^2 + 1$ and use it to find the bounds. This has the effect of making $N$ larger, but as we don’t care what the value of $N$ is just that it exists –we can accept that alteration).
+     
+     Step 3: Let $n \geq N$.
+    
+    Step 4: Consider 
+     \begin{center}
+        
+        $|a_n-a| = |\frac{1}{6n^2+1}-0|$
+        
+             $\frac{1}{6n^2+1} < \epsilon$
+
+     $1 < \epsilon * (6n^2+1)$
+     
+     $\frac{1}{\epsilon} < (6n^2+1)$
+     
+     $\frac{1}{\epsilon}-1 < 6n^2$
+     
+     $\frac{\frac{1}{\epsilon}-1}{6} < n^2$
+
+     $\sqrt{\frac{\frac{1}{\epsilon}-1}{6}}< n$
+
+     $\sqrt{\frac{\frac{1-\epsilon}{\epsilon}}{6}} < n$
+
+     $\sqrt{\frac{1-\epsilon}{6\epsilon}} < n$
+
+     $\frac{\sqrt{1-\epsilon}}{\sqrt{6\epsilon}} < n$
+     
+     $\frac{1}{\sqrt{6\epsilon}} < n$
+     
+     $<\epsilon$
+     \end{center}
+     Therefore $\lim \frac{1}{6n^2+1} \rightarrow 0$.
+     
+ \end{proof}
+	
+	\item  ~[Hale, A.] $\lim \frac{3n+1}{2n+5}$
+	 \begin{proof}
+  
+     Step 0: In general, we need $|\frac{3n+1}{2n+5}-\frac{3}{2}|<\epsilon$ or $|\frac{3n+1}{2n+5}| < \epsilon$
+     \begin{center}
+     
+     $|\frac{3n+1}{2n+5}-\frac{3}{2}|$
+
+     $\leq |\frac{2 \cdot (3n+1)-3 \cdot (2n+1)}{2 \cdot (2n+1)}|$
+
+     $=|\frac{6n+2-6n-3}{4n+2}|$
+
+     $=|\frac{-1}{4n_2}|$
+
+     $=\frac{1}{4n-2}$
+     
+     \end{center}
+     This is less than $\epsilon < 0$ if $4n+2 > \epsilon^{-1}$ or $n > (\epsilon^{-1}-2)/4$.  Note that we can instead choose $n > \epsilon^{-1}/4$.
+     
+      Step 1: Let $\epsilon > 0$.
+     
+     Step 2: Let $N_1 = \frac{1}{4\epsilon}$.  If $n > N_1$, then $4n+2>\frac{1}{\epsilon}+2>\frac{1}{\epsilon}$.  Thus $\frac{1}{4n+2}<\epsilon$.  
+     
+     Step 3: Let $n \geq N$.
+     
+     Step 4: Consider
+     \begin{center}
+
+     $|a_n-a| = |\frac{3n+1}{2n+5}-\frac{3}{2}|$
+        
+             $|\frac{3n+1}{2n+5}-\frac{3}{2}|$
+
+     $\leq |\frac{2 \cdot (3n+1)-3 \cdot (2n+1)}{2 \cdot (2n+1)}|$
+
+     $=|\frac{6n+2-6n-3}{4n+2}|$
+
+     $=|\frac{-1}{4n_2}|$
+
+     $=\frac{1}{4n-2}$
+     
+     $< \epsilon$.
+        
+     \end{center}
+     Therefore $\lim \frac{3n+1}{2n+5} \rightarrow 0$.
+     
+ \end{proof}
+	\item  ~[Harter, J.] $\lim \frac{2}{\sqrt{n+3}}$
+	 \begin{proof}
+     In general, we need $|\frac{2}{\sqrt{n+3}}-0|<\epsilon$.
+     This happens when $\sqrt{n+3}>\frac{2}{\epsilon}$ or $n>\frac{4-3\epsilon^2}{\epsilon^2}$.
+     \begin{center}
+     
+     $|\frac{2}{\sqrt{n+3}}|<\epsilon$
+
+     $(|\frac{2}{\sqrt{n+3}}|)^2 < \epsilon^2$
+
+     $\frac{4}{n+3}<\epsilon^2$
+
+     $4 < \epsilon^2 \cdot (n+3)$
+
+     $\frac{4}{\epsilon^2}<n+3$
+
+     $\frac{4}{\epsilon^2} - 3 < n$
+
+     $\frac{4}{\epsilon^2}-\frac{3}{1} \cdot \frac{\epsilon^2}{\epsilon^2} < n$
+
+     $\frac{4-3\epsilon^2}{\epsilon^2}< n$
+     
+     \end{center}
+     
+     Step 1: Let $\epsilon > 0$.
+     
+     Step 2: Let's choose $N > \frac{4-3\epsilon^2}{\epsilon^2}$, then $n > N$ implies that $n+3 > \frac{4}{\epsilon^2}$, and $\sqrt{n+3}>\frac{2}{\epsilon}$, so $\frac{2}{\sqrt{n+3}}<\epsilon$.
+     
+     Step 3: Let $n \geq N$.
+     
+     Step 4: Consider
+     \begin{center}
+     $|a_n-a| = |\frac{2}{\sqrt{n+3}}-0|$
+     
+    $=|\frac{2}{\sqrt{n+3}}|$
+     $<\epsilon$
+
+     \end{center}
+     Therefore $\lim \frac{2}{\sqrt{n+3}} \rightarrow 0$.
+     
+ \end{proof}
+	\end{enumerate}
+	
+%%%%%%%%%%%%%%
+
+\item  ~[James, J.] Prove the Squeeze Theorem, which states that if $x_n \leq y_n \leq z_n$, $\forall n \in \mathbb{N}$, and if $\lim x_n = \lim z_n = a$, then $\lim y_n = a$.  Hint: instead of trying to show something like $|p| < \varepsilon$, it is sometimes easier to show that $-\varepsilon < p < \varepsilon$.
+	\begin{proof}
+ Since $(x_n) \rightarrow a$, we can show that if $n \geq N_1$, then $|x_n-a|<\epsilon$.  Similarly, we can show that $|z_n-a|<\epsilon$ by defining a $N_2$ as $n \geq N_2$.  Let $N = max\left\{N_1,N_2\right\}$.  Then, if $n \geq N$, both $|x_n-a|<\epsilon$ and $|z_n-a|<\epsilon$.  This means that
+ \begin{center}
+
+ $a - \epsilon < x_n < a + \epsilon$
+
+ and
+
+ $a - \epsilon < z_n < a + \epsilon$
+ 
+ \end{center}
+
+ Consider $x_n \leq y_n \leq z_n$.  It then follows that
+ \begin{center}
+
+ $a - \epsilon < x_n \leq y_n \leq  z_n < a + \epsilon$,
+ 
+ \end{center}
+ which implies that $a - \epsilon \leq y_n \leq  a + \epsilon$, or $|y_n-a| < \epsilon$.
+ \end{proof}
+%%%%%%%%%%%%
+	
+\item  ~[Kline, L.] Give an example of each of the following, or state that such a request is impossible by referencing the proper theorem(s).
+
+	\begin{enumerate}
+	
+	\item  Sequences $(x_n)$ and $(y_n)$, which both diverge, but whose sum, $(x_n+y_n)$, converges.
+ 
+ \textbf{\underline{Answer:}}
+  \textcolor{black}{This is possible.  An example to show this is $x_n = (-1)^n$ and $y_n=(-1)^{n+1}$.  Then
+  \begin{center}
+  $(x_n)=(-1, 1, -1, 1, -1, 1,...)$
+  and
+  $(y_n) = (1, -1, 1, -1, 1, -1,...)$
+  \end{center}
+  which diverges, but $(x_n+y_n) = (0, 0, 0, 0, 0, 0, 0,...)$ converges.}
+
+	\item  Sequences $(x_n)$ and $(y_n)$, where $(x_n)$ converges, $(y_n)$ diverges, and whose sum, $(x_n+y_n)$ converges. 
+ 
+ \textbf{\underline{Answer:}}
+ \textcolor{black}{This is impossible.  The reason being is that if $(x_n)$ and $(x_n+y_n)$ both converge, then their difference $(x_n+y_n-x_n)=(y_n)$ also converges by the Algebraic Limit Theorem.}
+
+	\item  A convergent sequence $(x_n)$, with $x_n \neq 0$, $\forall n \in \mathbb{N}$, such that $\left( \frac{1}{x_n} \right)$ diverges.
+
+ \textbf{\underline{Answer:}}
+ \textcolor{black}{This is possible when $(b_n) \rightarrow 0$.  For example, when $b_n = \frac{1}{n} \neq 0$ and converges, but $\frac{1}{b_n}=n$ diverges.
+  }
+
+	\item An unbounded sequence $(x_n)$ and a convergent sequence $(y_n)$ with $(x_n - y_n)$ bounded. 
+
+ \textbf{\underline{Answer:}}
+  \textcolor{black}{This is impossible.  The reason being is that if $(b_n)$ and $(a_n-b_n)$ are bounded, then their sum $(b_n+a_n-b_n)=(a_n)$ is also bounded.
+  }
+
+	\item  Two sequences $(x_n)$ and $(y_n)$, where $(x_n \cdot y_n)$ and $(x_n)$ converge but $(y_n)$ diverges. 
+
+ \textbf{\underline{Answer:}}
+  \textcolor{black}{This is possible.  One example that shows this is when $a_n=0$ and $b_n = (-1)^n$.
+  }
+
+
+  
+	
+	\end{enumerate}
+	
+%%%%%%%%%%%%%
+
+\item  ~ Prove that limits, if they exist, are unique.  In other words, assume $\lim a_n = a_1$ and $\lim a_n = a_2$, and prove that $a_1 = a_2$.  Hint: use our lemma that states that $a = b$ if and only if $|a-b| < \varepsilon$, $\forall \varepsilon > 0$, as well as information about the two versions of $(a_n)$ and some cleverly chosen $N$ and $\varepsilon$ values.
+\begin{proof}
+We need to prove that if limits exist, they are unique.  By contradiction.  Suppose that $a_n \rightarrow a_1$ and $a_n \rightarrow a_2$ with $a_1 \neq a_2$.  This would mean that $\lim a_n = a_1$ and $\lim a_n = a_2$.  Put $\epsilon = |a_1-a_2| > 0$.  by definition of convergence, since $a_n \rightarrow a_1, \exists N_1$ such that $\forall n \geq N_1, |a_n-a| < \frac{\epsilon}{2}$.   Now since $a_n \rightarrow a_2, \exists N_2$ such that $\forall n \geq N_2, |a_n-a_2|<\frac{\epsilon}{2}$.  Let M be the maximum of $N_1$ and $N_2$, that is $M = max=\left\{N_1,N_2\right\}$.  Then for every $n \geq M, |a_1-a_2| = |a_1-a_n+a_m-a_2|$.  By splitting the modulus we get,
+\begin{align*}
+\left|a_1-a_2\right| &\leq \left|a_1-a_n\right|+\left|a_n-a_2\right|\\
+&< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+&=\epsilon\\
+&=\left|a_1-a_2\right|\\
+\end{align*}
+Since we already assumed that $\epsilon = |a_1-a|2|$, then we can conclude that $|a_1-a_2|<|a_1-a_2|$, a contradiction.  Thus $a_1=a_2$.
+\end{proof}
+	
+%%%%%%%%%%
+	
+\item  ~[Lauen, A.] Suppose that $(a_n)$ converges to $a$.  Define $b_n = \frac{a_n + a_{n+1}}{2}$.  Prove that $(b_n)$ converges to $a$.
+\begin{proof}
+
+Step 0: Consider $b_n = \frac{a_n + a_{n+1}}{2}$.  Then
+    \begin{align*}
+    |b_n-a| &= |\frac{a_n + a_{n+1}}{2}-a|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-\frac{a}{1}\right|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-(\frac{a}{1}\cdot\frac{2}{2})\right|\\
+    &=\left|\frac{a_n+a_{n+1}-2a}{2}\right|\\
+    &=\left|\frac{(a_n-a)+(a_{n+1}-a)}{2}\right|\\
+    &\leq \left|\frac{a_n-a}{2}|+|\frac{a_{n+1}-a}{2}\right|\\
+    &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+    &=\epsilon.\\
+    \end{align*}
+
+Step 1: Let $\epsilon > 0$.  
+
+Step 2:  Since $(a_n) \rightarrow a$, $\forall \epsilon > 0, \exists N \in \mathbb{N}$ such that whenever $n \geq N, |a_n-a| < \epsilon$. Also, it can be said that since $n+1 > n \geq N, |a_{n+1} - a| < \epsilon$.
+
+Step 3: Let $n \geq N$. 
+
+Step 4: Consider 
+    \begin{align*}
+    |b_n-a| &= |\frac{a_n + a_{n+1}}{2}-a|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-\frac{a}{1}\right|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-(\frac{a}{1}\cdot\frac{2}{2})\right|\\
+    &=\left|\frac{a_n+a_{n+1}-2a}{2}\right|\\
+    &=\left|\frac{(a_n-a)+(a_{n+1}-a)}{2}\right|\\
+    &\leq \left|\frac{a_n-a}{2}|+|\frac{a_{n+1}-a}{2}\right|\\
+    &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+    &=\epsilon.\\
+    \end{align*}
+
+Therefore $(b_n) \rightarrow a$.
+\end{proof}
+%%%%%%%%%%%%
+	
+\item  ~[Lewis, J.]
+
+	\begin{enumerate}
+	
+	\item  Prove that if $(a_n)$ converges to $a$, then $(|a_n|)$ converges to $|a|$.
+\begin{proof}
+ Let $\epsilon > 0$.  Since $(a_n) \rightarrow a, \exists M \in \mathbb{N}$ such that $|a_n-a| < \epsilon, \forall n \geq M$.  Now $|a_n| = |(a_)n-a)+a| \leq |a_n-a| + |a|$ (by triangle inequality theorem) (1).  $|a| = |(a-a_n)+a_n| \leq |a-a_n| + |a_n|$ (2). From (1), $|a_n| - |a| \leq |a_n-a|$.  From (2), $|a| - |a_n| \leq |a-a_n| = |a_n-a|$.  Therefore $||a_n|-|a|| \leq |a_n-a|$, which means that $||a_n|-|a|| \leq |a_n-a| < \epsilon, \forall n \in M$.  Hence $|a_n| \rightarrow |a|$.
+\end{proof}
+ 
+	\item  Is the converse true?  Either provide a counterexample or a proof.
+ 
+  \textbf{\underline{Answer:}}
+ \textcolor{black}{The converse of this statement is not true.}
+ 
+ \begin{proof}
+ Let $a_n=(-1)^n; n \in \mathbb{N}$.  Then $|a_n| = 1; n \in \mathbb{N}$.  Therefore, $|a_n| \rightarrow 1$.  But $a_n=(-1,1,-1,1,...)$ does not converge.  Thus the converse of this statement is not true.
+ \end{proof}
+	\end{enumerate}
+	
+%%%%%%%%
+	
+\item  ~[Lindskov, I.] Consider the following two definitions.
+
+	\begin{enumerate}
+	
+	\item[(i)]  A sequence $(a_n)$ is \emph{eventually} in a set $A \subseteq \mathbb{R}$ if there exists an $N \in \mathbb{N}$ such that $a_n \in A$, for all $n \geq N$.
+	
+	\item[(ii)]  A sequence $(a_n)$ is \emph{frequently} in a set $A \subseteq \mathbb{R}$ if, for every $N \in \mathbb{N}$, there exists an $m$, with $m \geq N$, such that $a_m \in A$.
+	
+	\end{enumerate}
+	
+	\begin{enumerate}
+	
+	\item  Is the sequence $((-1)^n)$ eventually or frequently in the set $\{ 1 \}$?
+ 
+	 \textbf{\underline{Answer:}}
+  \textcolor{black}{Frequently.}
+  
+	\item  Which definition is stronger?  Does frequently imply eventually or does eventually imply frequently?
+
+  \textbf{\underline{Answer:}}
+  \textcolor{black}{Eventually implies frequently.}
+  
+	\item  Give an alternate phrasing of our topological definition of convergence (using neighborhoods) using either frequently or eventually.  Why is your choice the correct choice?
+
+  \textbf{\underline{Answer:}}
+  \textcolor{black}{A sequence $(a_n) \rightarrow a$ if and only if it is eventually in $(a-\epsilon, a+\epsilon)$ for any $\epsilon > 0$.}
+  
+	\item  Suppose that an infinite number of terms of a sequence $(a_n)$ are equal to $2$.  Is $(a_n)$ necessarily eventually in the interval $(1.9,2.1)$?  Is it frequently in the interval $(1.9,2.1)$?
+
+  \textbf{\underline{Answer:}}
+  \textcolor{black}{$x_n$ is frequently in $(1.9, 2.1)$ but not necessarily eventually in $(1.9,2.1)$.}
+	
+	\end{enumerate}
+	
+%%%%%%%%%%%%
+
+\end{enumerate}
+
+\end{document}

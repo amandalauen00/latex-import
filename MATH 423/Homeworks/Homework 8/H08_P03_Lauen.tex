@@ -1,0 +1,83 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{tikz} % useful for graphics
+
+% Define a lemma environment
+% Set the style of the new theorem environments so that the text isn't in italics
+\theoremstyle{definition}
+% Define lemma environment, the first argument is the name in LaTeX, the second argument is what is typeset
+\newtheorem{lemma}{Lemma}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#8
+
+Assigned: November 10, 2022
+
+Due: November 17, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item[3.]  ~[Lauen, A.] Show that $f(x) = 1/x^2$ is uniformly continuous on the set $[1,\infty)$ but not on the set $(0,1]$.  Hint: use the examples from the notes for inspiration on bounding extra terms, and don't forget that we have a tool for showing that a function is not uniformly continuous. 
+
+%\ \textbf{What we Know:}
+%\textbf{Definition of uniformly continuous:}
+%A function is uniformly continuous on $A$ if $\forall \epsilon > 0, \exists \delta > 0$ such that $|x-y| < \delta$ implies $|f(x)-f(y)| < \epsilon, \forall x, y \in A$.
+%\textbf{Sequential Criterion for Non-Uniform Continuity:}
+%A function $f: A \rightarrow \mathbb{R}$ fails to be uniformly continuous on $A$ iff $\exists \epsilon_0 > 0$ and $(x_n), (y_n) \subseteq A$ such that $(|x_n-y_n|) \rightarrow 0$ but $|f(x_n) - f(y_n)| \geq \epsilon_0$.
+%\textbf{Theorem:} A function $f$ that is continuous on a compact set $K$ is uniformly continuous on $K$.
+
+\begin{proof}
+A function is uniformly continuous on $A$ if $\forall \epsilon > 0, \exists \delta > 0$ such that $|x-y| \leq \delta$ implies $|f(x)-f(y)| \leq \epsilon, \forall x, y \in A$.  To show that $f$ is uniformly continuous on $[1,\infty)$, let $\epsilon > 0$.  If $x,y \in [1,\infty)$, then $\frac{1}{xy^2} \leq 1$ and $\frac{1}{x^2y} \leq 1$.  Choose $\delta=\frac{\epsilon}{2}.$ Then, for $x,y \in [1,\infty)$, if $|x-y|<\delta$, then $|\frac{1}{x^2}-\frac{1}{y^2}|=\frac{|x^2-y^2|}{x^2y^2}=|x-y|\cdot \frac{x+y}{x^2y^2}=|x-y|\cdot (\frac{1}{xy^2}+\frac{1}{x^2y})\leq 2\cdot|x-y| < 2 \cdot \delta = \ 2\cdot \frac{\epsilon}{2}=\epsilon$.  Thus $f$ is uniformly continuous on $[1,\infty)$.
+
+To show $f$ is not uniformly continuous on $A = (0,1]$, we use the Sequential Criterion for Non-Uniform Continuity, which states that a function $f: A \rightarrow \mathbb{R}$ fails to be uniformly continuous on $A$ if and only if $\exists \epsilon_0 > 0$ and $(x_n), (y_n) \subseteq A$ such that $(|x_n-y_n|) \rightarrow 0$ but $|f(x_n) - f(y_n)| \geq \epsilon_0$.  Using this, let $a_n = \frac{1}{n}, $ $b_n=\frac{1}{2n} \subseteq A$, and $\epsilon_0 = 3$.  Then, $|a_n-b_n|=\frac{1}{2n} \rightarrow 0$.  However, $|f(a_n) - f(b_n)| = |n^2-4n^2|=|-3n^2| = 3n^2 \geq 3$, $\forall n \in \mathbb{N}$.  Hence $f$ is not uniformly continuous on $(0,1]$.
+
+Therefore $f(x) = \frac{1}{x^2}$ is uniformly continuous on the set $[1,\infty)$ but not on the set $(0,1]$.
+
+\end{proof}
+	
+%%%%%%%%%%%%
+
+\end{enumerate}
+
+\end{document}

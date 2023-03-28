@@ -1,0 +1,100 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{xcolor}
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#2
+
+Assigned: September 7, 2022
+
+Due: September 14, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item[5.] ~[Lauen, A.] Compute the supremum and infimum for each of the following sets.  You don't need a rigorous proof, but provide details.  Hint: write out the members of the set.  There may be an infinite number of elements, but write out enough of them to get a sense for the elements of the set.
+
+	\begin{enumerate}
+\item  $A_1 = \{n \in \mathbb{N}: n^2 < 10\}$.
+  \par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_1)}=3$ and $\inf{(A_1)} = 1$.}
+\begin{proof}
+  The reason that $\sup{(A_1)}=3$ is that 3 is an upperbound of the set $A_1 = \{n \in \mathbb{N}: n^2 < 10\}$.  In this case, the values included would be $\left\{1,2,3\right\}$.  Thus, $\sup{(A_1)} \leq 3$ but $3 \in A_1$.  Therefore $\sup{(A_1)}=3$.  A similar argument can be made for $\inf{(A_1)} = 1$, since it is the lowerbound located within the set.  
+\end{proof}  
+
+	
+	\item  $A_2 = \left\{\frac{n}{m+n}: m, n \in \mathbb{N}\right\}$.
+	\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_2)}=1$ and $\inf{(A_2)} = 0$.}
+\begin{proof}
+The reason why $\sup{(A_2)}=1$ is because it is the least upper bound in the set $A_2 = \left\{\frac{n}{m+n}: m, n \in \mathbb{N}\right\}$.  When writing out the elements, it goes:$\left\{\frac{1}{2}, \frac{1}{3}, \frac{1}{3}, \frac{1}{4},...,\frac{2}{3}, \frac{2}{4}, \frac{2}{5},...,\frac{3}{4}, \frac{3}{5}, ...\right\}$ Now for a fixed $m$ value, let 
+\begin{center}
+\[\lim_{n\to\infty} \frac{n}{m+n}\] 
+\[\lim_{n\to\infty} \frac{1}{\frac{m}{n} + 1} = 1\]
+\end{center}
+Also, $\frac{n}{m+n} = \frac{n+m-m}{m+n}=1-\frac{m}{m+n}$.  Note that $\forall m, n \in \mathbb{N}, \frac{n}{m+n} \leq 1$, meaning $\sup{(A_2)} =1$.
+The values of $n$ and $m$ as they are increased by 1 make the fraction become smaller and smaller towards zero but never quite hit zero.  This idea helps with making the $\inf{(A_2)} = 0$.  
+\end{proof}
+	\item  $A_3 = \left\{\frac{n}{2n+1}: n \in \mathbb{N}\right\}$.
+		\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_3)}=\frac{1}{2}$ and $\inf{(A_3)} = \frac{1}{3}$.}
+\begin{proof}
+The reason why $\sup{(A_3)}=\frac{1}{2}$ and $\inf{(A_3)} = \frac{1}{3}$ is when writing out the set elements, it goes $\left\{\frac{1}{3}, \frac{2}{5}, \frac{3}{7}, \frac{4}{9},...\right\}$.  As it can be seen, as the values of $n$ go up, the values of the set get smaller and smaller.  To prove this, we can say that $2n+n \geq 2n+1, \forall n \in \mathbb{N}$.  Simplifying it down, it becomes $3n \geq 2n+1$.  Simplifying it down more, then $n \geq \frac{2n}{3} + \frac{1}{3}$.  This can be rewritten as $\frac{n}{2n+1} \geq \frac{1}{3}, \forall n \in \mathbb{N}$.  Since $\frac{1}{3} \in A_3$ and is the smallest element in $A_3$, then $\inf{(A_3)} = \frac{1}{3}$.  A similar route can be taken for the supremum by stating that $2n < 2n+1, \forall n \in \mathbb{N}$.  Simplifying this equation, we get that $\frac{n}{2n+1} < \frac{1}{2}, \forall n \in \mathbb{N}$.  Since this is the greatest lower bound, it can be concluded that $\sup{(A_3)} = \frac{1}{2}$.
+\end{proof}
+	\item  $A_4 = \left\{ \frac{m}{n} : m, n \in \mathbb{N} \textnormal{ and } m+n \leq 10\right\}$.
+		\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_4)}=9$ and $\inf{(A_4)} = \frac{1}{9}$.}
+\begin{proof}
+The reason why $\sup{(A_4)}=9$ and $\inf{(A_4)} = \frac{1}{9}$ is when writing out the elements, one can know that $m$ and $n$ can be the same but cannot have either $m$ or $n$ be $0$.  The elements are as follows: 
+
+$\left\{\frac{1}{1}, \frac{1}{2}, \frac{1}{3},\frac{1}{4},\frac{1}{5},\frac{1}{6},\frac{1}{7},\frac{1}{8},\frac{1}{9},..., \frac{2}{1}, \frac{2}{2},\frac{2}{3},...,\frac{2}{8}, ..., \frac{3}{1},\frac{3}{2},...,\frac{3}{7},..., \frac{4}{1},\frac{4}{2},...,\frac{4}{6},\frac{5}{1},\frac{5}{2},...,\frac{5}{5},\frac{6}{1},...,\frac{6}{4},\frac{7}{1},\frac{7}{2},\frac{7}{3},\frac{8}{1},\frac{8}{2}, \frac{9}{1}\right\}$
+
+In the case of this large set, $\forall n \in A_4, n \leq 9$ and $9 \in A_4$, so $\sup{(A_4)} = 9$ and $\forall n \in A_4, n \geq \frac{1}{9}$ and $\frac{1}{9} \in A_4$, so $\inf{(A_4)} = \frac{1}{9}$.
+\end{proof}
+	\end{enumerate}
+\end{enumerate}
+
+\end{document}

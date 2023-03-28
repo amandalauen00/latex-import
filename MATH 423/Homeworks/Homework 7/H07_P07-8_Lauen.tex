@@ -1,0 +1,91 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{tikz} % useful for graphics
+
+% Define a lemma environment
+% Set the style of the new theorem environments so that the text isn't in italics
+\theoremstyle{definition}
+% Define lemma environment, the first argument is the name in LaTeX, the second argument is what is typeset
+\newtheorem{lemma}{Lemma}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf 
+Name: Amanda Lauen
+
+Professor: Dr. Brent Deschamp
+
+Class: MATH 423-01  Advanced Calculus I
+
+Due: November 10, 2022
+
+Assignment: Homework \#7 Everyone Problem 
+
+}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item[7.]  ~[Everyone, James, J.] (\textbf{Topological Characterization of Continuity})  Let $g: X \to Y$.  If $A \subseteq Y$ is in the co-domain of $g$, define $$g^{-1}(A) = \{x \in X: g(x) \in Y \},$$ which we previously defined as the pre-image of $A$.  Note that $g^{-1}(A) \subseteq X$. Prove that $g$ is continuous if and only if $g^{-1}(\Omega)$ is an open set in $X$ whenever $\Omega$ is an open set in $Y$.
+
+Hint: this is a hard problem because there are many sets and neighborhoods in the same problem, some in the domain and some in the range.  Rely on definitions, and make sure that you apply them in the proper order.  For instance, if you need to prove that a set is open, don't start with the definition of continuity.
+
+
+Idea 1:
+\begin{proof}
+Firstly, we suppose that $g$ is continuous on $X$ and we will prove that inverse image of each open set is open.  To do this, let $(X,T)$ and $(Y,T')$ be two topological spaces and $g$ be a function defined from $(X,T)$ to $(Y,T')$, i.e., $g: (X,T) \rightarrow (Y,T')$. Firstly, suppose that $g$ is continuous on $X$ and $\Omega$ be an open set in $Y$.  If $Z$ is any point of $g^{-1}(\Omega)$ and $g$ is continuous at $Z$, so there exists an open set $G$ containing $Z$ such that $g(G) \subseteq \Omega$.  Thus $G \subseteq g^{-1}(\Omega)$ and hence for each point $Z \in g^{-1}(\Omega),$ we have $Z \in G \subseteq g^{-1}(\Omega)$.  Hence $g^{-1}(\Omega)$ is a neighbourhood of each of its points and $g^{-1}(\Omega)$ is an open set in $X$.
+
+Conversely, we assume that the inverse image of each open set is open and we will prove that $g$ is continuous on $X$.  To do this, assume that the inverse image of each open set under $g$ is open.  We will show that $g$ is continuous on $X$.  Let $x \in X$ be an arbitrary point and $g(x)$ be its image under $g$.  Consider any open set containing $g(x)$.  Let $\Omega$ be any open set such that $g(x) \in \Omega$.  By our assumption, $g^{-1}(\Omega)$ must be an open set. Since $g(x) \in \Omega$, then $x \in g^{-1}(\Omega)$ and $x \in g^{-1}(\Omega) \subseteq g(g^{-1}(\Omega)) \subseteq \Omega$.  Thus we have shown that there exists an open set $g^{-1}(\Omega)$ which contains $x$ and whose image under $g$ is contained in $\Omega$.  Hence $g$ is continuous at $x$.  But $x$ is arbitrary, so $g$ is continuous on $X$. 
+\end{proof}
+
+Idea 2:
+\begin{proof}
+Let $g : X \rightarrow Y$.  If $A \subseteq Y$ is in the codomain of $g$, then $g^{-1}(A)={x \in X : s(x) \in Y}$.  If $g$ is continuous, then $\Omega \subset Y$ is open and $a \in g^{-1}(\Omega)$. We want to show $g^{-1}(\Omega)$ contains an open set.  Since $\Omega$ is open, $\exists g(a)$ neighborhood, where $(g(a) - \epsilon, g(a) + \epsilon) \subseteq \Omega, \epsilon > 0$.  
+
+Since, $g$ is continuous, $\exists a$ neighborhood where $(a-\delta(\epsilon), a+\delta(\epsilon))$ such that $g((a-\delta(\epsilon), a+\delta(\epsilon)) \subseteq (g(a) - \epsilon, g(a)+\epsilon) \subseteq \Omega$.  Then $a \in (a-\delta(\epsilon), a+\delta(\epsilon))_D$ (which is open) $\subseteq g^{-1}(\Omega)$.  Therefore $g^{-1}(\Omega)$ contains an open a-set and $g^{-1}(\Omega)$ is open.
+
+Conversely, if the $g$-preimage of every open subset if it is an open set and if $a \in D$, then for any $g(a)$ neighborhood, the $g$-preimage is an open a-set, which contains an $a$ neighborhood and thus $g$ is continuous at $a$.  This means that $a \in g^{-1}((g(a)-\epsilon, g(a)+\epsilon)) \subseteq D$ where $g^{-1}((g(a)-\epsilon, g(a)+\epsilon))$ is open.  Then $a-\delta(\epsilon), a+\delta(\epsilon)) \subseteq g^{-1}((g(a)-\epsilon, g(a)+\epsilon))$.  Also $g(a-\delta(\epsilon), a+\delta(\epsilon)) \subseteq (g(a)-\epsilon,g(a)+\epsilon)$.  Therefore $g$ is continuous.
+
+\end{proof}
+%%%%%%%%%%%%
+
+\end{enumerate}
+
+\end{document}

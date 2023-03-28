@@ -1,0 +1,285 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{xcolor}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#2
+
+Assigned: September 7, 2022
+
+Due: September 14, 2022}
+
+\textbf{\textcolor{red}{\underline{To Check}: 5abcd}}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\item ~[Aitchison, A.] Describe each of the following sets as the empty set, $\mathbb{R}$, or in interval notation, as appropriate.
+
+	\begin{enumerate}
+	
+	\item  $$\bigcup_{n=1}^{\infty} \left( -n, n \right)$$
+\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{In this case, there is an $x$ that exists within $\mathbb{R}$ such that there exists a value called $N$.  So, it can be written at $N \leq x < N+1$.  Therefore, if $x \geq 0$, then $x \in (-N-1, N+1)$ and if $x < 0$, then $x \in (N-1, 1-N)$.  Therefore, $\cup(-n,n) = \mathbb{R}$.}
+	
+	\item  $$\bigcap_{n=1}^{\infty} \left( -\frac{1}{n}, \frac{1}{n} \right)$$
+	\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{In this set, it states that $-\frac{1}{n} < 0 < \frac{1}{n}, \forall n$.  Then, $0 \in \cap(-\frac{1}{n}, \frac{1}{n})$.  If $x > 0, \exists N$ such that $x > \frac{1}{N}$.  Therefore, $x \notin (-\frac{1}{N}, \frac{1}{N})$ meaning that $x \notin \cap(-\frac{1}{n},\frac{1}{n})$.  Similarly, if $x < 0$, then $x \notin \cup(-\frac{1}{n},\frac{1}{n})$, therefore $\cap(-\frac{1}{n},\frac{1}{n})={0}=[0,0]$.}
+
+	\item  $$\bigcap_{n=1}^{\infty} \left( -\frac{1}{n}, 1 + \frac{1}{n} \right)$$
+	\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{This set can be viewed similarly to (b) such that $\cap(-\frac{1}{n},1+\frac{1}{n}) = {0 \leq x \leq 1} = [0,1]$.}
+	\item  $$\bigcup_{n=1}^{\infty} \left( -\frac{1}{n}, 2 + \frac{1}{n} \right)$$
+	\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{Since $(-\frac{1}{n}, 2 + \frac{1}{n}) \subset (-1,3) \forall n$, then $\cup(-\frac{1}{n}, 2 + \frac{1}{n}) = (-1,3)$.}
+	\end{enumerate}
+	
+\item  Prove the following statements using induction.  The first statement should be straightfoward.  The second statement is trickier to prove.  Make sure that can you prove (a) before attempting (b).
+
+	\begin{enumerate}
+	
+	\item  ~[Griffith, B.] The quantity $n^3-n$ is divisible by $3$, for $n \in \mathbb{N}$.
+ \begin{proof}
+ Using induction, let $n =1$ be our starting value.  Plugging it into the equation $n^3-n$, we get $1^3-1=0$, which is divisible by 3.  Since this is true, then we can assume the same statement is true for the value $n = k$.  We have to prove that $n=k+1$, is true.  By plugging in $k+1$ into the equation we get the following algebraic breakdown:
+ \begin{center}
+ $n^3-n = k^3-k$
+ \par \medskip
+ $(k+1)^3-(k+1)$
+ \par \medskip
+ $k^3+3k^2+3k+1-k-1$
+ \par \medskip
+ $(k^3-k)+3(k^2-k)$
+ \par \medskip
+ $(k^3-k)+3k(k+1)$
+ \end{center}
+ This final equation is $n^3-n$ plus a multiple of 3.  Since we assumed that $n^3-n$ was a multiple of 3 with the $n=k$ feature, it follows that $(n+1)^3-(n-1)$ is also a multiple of 3.  So, since the statement "$n^3-n$ is divisible by $3$" is true for $n=1$, and it's truth for $k$ implies its truth for $k+1$, hence proving that the statement is true for all $n \in \mathbb{R}$.
+ \end{proof}
+	
+	\item  ~[James, J.] The quantity $n^3+5n$ is divisible by $6$, for $n \in \mathbb{N}$.
+ \begin{proof}
+Since $1^3 + 5 * 1 = 6$, and 6 is obviously divisible by 6, the base case $(n = 1)$ of the induction holds. Now suppose that for a certain positive integer $n$, it is known that $n^3 + 5n$ is divisible by 6. We need to deduce that $(n + 1)^3 + 5(n + 1)$ is divisible by $6$. Expanding this quantity, collecting terms, and factoring, we find that:
+\begin{equation}
+    (n + 1)^3 + 5(n + 1) = (n^3 + 5n)+3n(n + 1) + 6.
+\end{equation}
+By the induction hypothesis, $(n^3 + 5n)$ is divisible by 6. On the other hand,
+$3n(n+1)$ is obviously divisible by 3, and since one of the consecutive integers
+$n$ and $n + 1$ is even, $3n(n + 1)$ is also divisible by 2. Thus all three terms
+on the right-hand side of (1) are divisible by 6, and so the left-hand side is
+divisible by 6. This completes the induction step of the proof.  Therefore, the quantity $n^3+5n$ is divisible by $6$, for $n \in \mathbb{N}$.
+ \end{proof}	
+	\end{enumerate}
+
+\item  Let $y_1=1$, and for each $n \in \mathbb{N}$ define $y_{n+1} = (3y_n+4)/4$.
+
+	\begin{enumerate}
+	
+	\item  ~[Delfosse, D.] Use induction to prove that the sequence satisfies $y_n < 4$, for all $n \in \mathbb{N}$.
+ \begin{proof}
+ By induction, we start with the base casae.  Since we are given that $y_1 = 1$ in the problem, then it's clear that $y_1 < 4$.  For the inductive step, we must assume that $y_k < 4$.  Then we must prove that $y_{k+1} < 4$.  We first plug in the $k+1$ into the original equation:
+ \begin{center}
+ $y_{k+1} = \frac{3y_k+4}{4}$
+ 
+ $\frac{3}{4}y_k + 1$
+ \end{center}
+ Since this is the inductive hypothesis, $y_k < 4$, so we can plug in 4 into the new equation to get:
+ \begin{center}
+ $y_{k+1} = \frac{3}{4}y_k + 1 < \frac{3}{4}*4+1=3+1=4$
+ \end{center}
+ so, indeed $y_{k+1} < 4$.  Therefore, since both the base case and the inductive step are true, we can conclude by induction that $y_n < 4 \forall n \in \mathbb{N}$.
+ \end{proof}
+	
+	\item  ~[Hale, A.] Use induction to prove that the sequence $(y_1, y_2, y_3, \ldots)$ is increasing.  A sequence is \emph{increasing} if whenever $m < n$ it must be that $y_m \leq y_n$.  Hint: focus on $n$ and $n+1$, rather than a generic $m$ and $n$.
+ \begin{proof}
+ In order to prove that  $(y_1, y_2, y_3, \ldots)$ is increasing, we must look at the equation that $y_n < y_{n+1} \forall n \in \mathbb{N}$.  By induction, we can prove the base case.  We must prove that $y_1 < y_2$; since $y_1 = 1$, then: 
+ \begin{center}
+     $y_2 = \frac{3y_1+4}{4} = \frac{7}{4}$.
+ \end{center}
+ Since $1 < \frac{7}{4}$, then the statement $y_1 < y_2$ is true.  For the inductive step, assume that $y_k < y_{k+1}$.  We must prove that $y_{k+1}<y_{k+2}$.  Since we have $y_k < y_{k+1}$, we have that: 
+ \begin{center}
+  $y_{k+1} = \frac{3y_k+4}{4} < \frac{3y_{k+1}+4}{4} = y_{k+2}$    
+ \end{center}
+ where the equalities each follow from the definition of the $y_i$'s.
+ Therefore, we conclude by induction that $y_n < y_{n+1} \forall n \in \mathbb{N}$.
+ \end{proof}	
+	\end{enumerate}
+	
+\item  Use the Triangle Inequality to prove the following inequalities.
+
+	\begin{enumerate}
+	
+	\item  ~[Harter, J.] $|a-b| \leq |a| + |b|$.  Hint: hide the negative sign inside a substitution.
+ \begin{proof}
+ To begin this proof, we must define the Triangle Inequality.  It states that by letting $x$ and $y$ be real numbers in $\mathbb{R}$, then $|x + y| \leq |x| + |y|$.  In this case, we are proving the Triangle Inequality but with $a$ and $b$.  Let $x = a$ and $y = -b$.  Then our restated triangle inequality is $|a + (-b)| \leq |a| + |(-b)|$.  However, $|a+(-b)| = |a-b|$ and $|-b|=|-1*b|=|-1|*|b|=|b|$, so we have proven that $|a-b| \leq |a| + |b|$.
+ \end{proof}	
+	\item  ~[Kline, L.] $||a| - |b|| \leq |a-b|$.  Hint: split this into two cases, (i) $|a| - |b| \leq |a-b|$ and (ii) $-(|a| - |b|) \leq |a-b|$.  For (i) try to prove that $|a| \leq |b| + |a-b|$.
+ \begin{proof}
+In this proof, we must split it into two cases: 
+\begin{center}
+ $(i) |a|-|b| \leq |a-b|$
+ 
+ $(ii) -(|a|-|b|) \leq |a-b|$
+\end{center}
+For case (i), let $m = a-b$ and $n = b$.  By the Triangle Inequality theorem, $|m+n| \leq |m| + |n|$.  By substitution, it can be rewritten as $|a-b+b| \leq |a-b|+|b|$.  Simplifying it down more, and subtracting $|y|$ from both sides, we get that $|a|-|b| \leq |a-b|$ proving case (i).
+
+For case (ii), a similar procedure can be done.  Let $m = b-a$ and $n = a$.  By rewriting the case and Triangle Inequality theorem, $|m+n| \leq |m| + |n|$.  By substitution, $|b-a+a| \leq |b-a|+|a|$, which simplifies to $|b| \leq |b-a| + |a|$.  By subtracting $|b|$ and $|b-a|$ from each side, then it can be written as $|a| - |b| \geq -|b-a|$.  By order of subtraction, then $|a| - |b| \geq -|a-b|$, thus proving case (ii).
+
+Therefore, by the fact that if $|a| \leq b$, then $-b \leq a \leq b$, then $||a| - |b|| \leq |a-b|$.
+ \end{proof}	
+	\end{enumerate}
+	
+\item  ~[Lauen, A.] Compute the supremum and infimum for each of the following sets.  You don't need a rigorous proof, but provide details.  Hint: write out the members of the set.  There may be an infinite number of elements, but write out enough of them to get a sense for the elements of the set.
+
+	\begin{enumerate}
+\item  $A_1 = \{n \in \mathbb{N}: n^2 < 10\}$.
+  \par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_1)}=3$ and $\inf{(A_1)} = 1$.}
+\begin{proof}
+  The reason that $\sup{(A_1)}=3$ is that 3 is an upperbound of the set $A_1 = \{n \in \mathbb{N}: n^2 < 10\}$.  In this case, the values included would be $\left\{1,2,3\right\}$.  Thus, $\sup{(A_1)} \leq 3$ but $3 \in A_1$.  Therefore $\sup{(A_1)}=3$.  A similar argument can be made for $\inf{(A_1)} = 1$, since it is the lowerbound located within the set.  
+\end{proof}  
+
+	
+	\item  $A_2 = \left\{\frac{n}{m+n}: m, n \in \mathbb{N}\right\}$.
+	\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_2)}=1$ and $\inf{(A_2)} = 0$.}
+\begin{proof}
+The reason why $\sup{(A_2)}=1$ is because it is the least upper bound in the set $A_2 = \left\{\frac{n}{m+n}: m, n \in \mathbb{N}\right\}$.  When writing out the elements, it goes:$\left\{\frac{1}{2}, \frac{1}{3}, \frac{1}{3}, \frac{1}{4},...,\frac{2}{3}, \frac{2}{4}, \frac{2}{5},...,\frac{3}{4}, \frac{3}{5}, ...\right\}$ Now for a fixed $m$ value, let 
+\begin{center}
+\[\lim_{n\to\infty} \frac{n}{m+n}\] 
+\[\lim_{n\to\infty} \frac{1}{\frac{m}{n} + 1} = 1\]
+\end{center}
+Also, $\frac{n}{m+n} = \frac{n+m-m}{m+n}=1-\frac{m}{m+n}$.  Note that $\forall m, n \in \mathbb{N}, \frac{n}{m+n} \leq 1$, meaning $\sup{(A_2)} =1$.
+The values of $n$ and $m$ as they are increased by 1 make the fraction become smaller and smaller towards zero but never quite hit zero.  This idea helps with making the $\inf{(A_2)} = 0$.  
+\end{proof}
+	\item  $A_3 = \left\{\frac{n}{2n+1}: n \in \mathbb{N}\right\}$.
+		\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_3)}=\frac{1}{2}$ and $\inf{(A_3)} = \frac{1}{3}$.}
+\begin{proof}
+The reason why $\sup{(A_3)}=\frac{1}{2}$ and $\inf{(A_3)} = \frac{1}{3}$ is when writing out the set elements, it goes $\left\{\frac{1}{3}, \frac{2}{5}, \frac{3}{7}, \frac{4}{9},...\right\}$.  As it can be seen, as the values of $n$ go up, the values of the set get smaller and smaller.  To prove this, we can say that $2n+n \geq 2n+1, \forall n \in \mathbb{N}$.  Simplifying it down, it becomes $3n \geq 2n+1$.  Simplifying it down more, then $n \geq \frac{2n}{3} + \frac{1}{3}$.  This can be rewritten as $\frac{n}{2n+1} \geq \frac{1}{3}, \forall n \in \mathbb{N}$.  Since $\frac{1}{3} \in A_3$ and is the smallest element in $A_3$, then $\inf{(A_3)} = \frac{1}{3}$.  A similar route can be taken for the supremum by stating that $2n < 2n+1, \forall n \in \mathbb{N}$.  Simplifying this equation, we get that $\frac{n}{2n+1} < \frac{1}{2}, \forall n \in \mathbb{N}$.  Since this is the greatest lower bound, it can be concluded that $\sup{(A_3)} = \frac{1}{2}$.
+\end{proof}
+	\item  $A_4 = \left\{ \frac{m}{n} : m, n \in \mathbb{N} \textnormal{ and } m+n \leq 10\right\}$.
+		\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{$\sup{(A_4)}=9$ and $\inf{(A_4)} = \frac{1}{9}$.}
+\begin{proof}
+The reason why $\sup{(A_4)}=9$ and $\inf{(A_4)} = \frac{1}{9}$ is when writing out the elements, one can know that $m$ and $n$ can be the same but cannot have either $m$ or $n$ be $0$.  The elements are as follows: 
+
+$\left\{\frac{1}{1}, \frac{1}{2}, \frac{1}{3},\frac{1}{4},\frac{1}{5},\frac{1}{6},\frac{1}{7},\frac{1}{8},\frac{1}{9},..., \frac{2}{1}, \frac{2}{2},\frac{2}{3},...,\frac{2}{8}, ..., \frac{3}{1},\frac{3}{2},...,\frac{3}{7},..., \frac{4}{1},\frac{4}{2},...,\frac{4}{6},\frac{5}{1},\frac{5}{2},...,\frac{5}{5},\frac{6}{1},...,\frac{6}{4},\frac{7}{1},\frac{7}{2},\frac{7}{3},\frac{8}{1},\frac{8}{2}, \frac{9}{1}\right\}$
+
+In the case of this large set, $\forall n \in A_4, n \leq 9$ and $9 \in A_4$, so $\sup{(A_4)} = 9$ and $\forall n \in A_4, n \geq \frac{1}{9}$ and $\frac{1}{9} \in A_4$, so $\inf{(A_4)} = \frac{1}{9}$.
+\end{proof}
+	\end{enumerate}
+	
+\newpage
+
+\item  ~[Nupen, R.] Prove that if $a$ is an upper bound for $A$ and $a$ is also an element of $A$, then it must be that $a = \sup{(A)}$.  Hint: prove that $a \leq \sup{(A)}$ and $\sup{(A)} \leq a$.
+ \begin{proof}
+ By contradiction, suppose that $a \neq sup(A)$.  Since $a$ is an upper bound for $A$, it follows taht it is larger than the smallest upper bound: $a > sup(A)$.  However, since $sup(A)$ is an upper bound for $A$, it is larger or equal to all elements of $a$; in particular $a \in A$, so $sup(A) \leq a$, a contradiction with our previous result that $a > sup(A)$.  Hence, our initial assimption was false and $a = sup(A)$.
+ \end{proof}	
+ 
+\item  ~[Everyone, Lindskov, I.] Assume that $A$ and $B$ are nonempty, bounded above, and that $A \subseteq B$.  Prove that $\sup{(A)} \leq \sup{(B)}$.
+\begin{proof}
+Let $b = sup(B)$ and $a = sup(A)$.  Then $b \geq x, \forall x \in B$ and $b \geq x, \forall x \in A$.  This means that $b$ is an upper bound of $A$.  But $a$ is the least upper bound of $A$, hence $a \leq b$.  Substituting in the values, it becomes $sup(A) \leq sup(B)$. 
+\end{proof}
+
+
+\item ~[Everyone, Krason, T.] 
+
+	\begin{enumerate}
+
+	\item  Write a formal definition for the terms \emph{bounded below}, \emph{lower bound}, and \emph{infimum}. 
+\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{A set $A \subseteq \mathbb{R}$ is \emph{bounded below} if $\exists u \in \mathbb{R}$ such that $x \geq u, \forall x \in A$. We call $u$ a \emph{lower bound} of A.  A real number $s$ is the greatest lower bound \emph{(infimum)} of the set $A \subseteq \mathbb{R}$  if: }
+
+\begin{center}
+\par \medskip
+1.	$s$ is a lower bound of $A$. 
+\par \medskip
+2.	If $u$ is any lower bound for $A$, then $s \geq u$. 
+\par \medskip
+\end{center}
+\par \medskip
+\textcolor{black}{We write the infimum as $s = inf(A)$.}
+
+	\item  State and prove a version of our lemma concerning the supremum and $\varepsilon > 0$ for the infimum.
+\begin{proof}
+Our lemma states to assume $s \in \mathbb{R}$ is an upper bound for a set $A \subseteq \mathbb{R}$.  Then $s=sup(A)$ if and only if $\forall \epsilon>0 ,\exists a \in A$ such that $s-\epsilon<a$.  There are two directions to prove this lemma.  In this case, we will prove the forward case.  In the forward case, assume $s$ is an upper bound of $A$ and $s=sup(A)$.  This means that given any upper bound $u$, it must be that $s \leq u$.  Then let $\epsilon >0$.  Consider $s-\epsilon<s$ and $s-\epsilon$ is not an upper bound.  With these notions, it can be stated that $\exists a \in A$ such that $s-\epsilon<a$.  The backwards case can be proven as well using two separate cases that helps with determining that $s=sup(A)$.
+\end{proof}
+	\end{enumerate}
+	
+\item ~[Lewis, J.] 
+
+	\begin{enumerate}
+	
+	\item  Let $A$ be bounded above, and define $B = \{b \in \mathbb{R}: b \textnormal{ is a lower bound for } A\}$.  Prove that $\sup{(B)} = \inf{(A)}$.  Hint: first prove that $\sup{(B)}$ exists.  Then prove that $\sup{(B)}$ satisfies the definition of $\inf{(A)}$.
+	 \begin{proof}
+Given that $A$ is bounded above, then $\exists y \in \mathbb{R}$ such that $\forall a \in A$, $|a| \leq y$.  Now if $A$ is unbounded below, then $A$ has no lower bound, meaning $B = \emptyset$.  This also means that if $A$ is bounded below, then $A$ has a lower bound, meaning $B = \emptyset$.  To define $B$, for any $x \in B$, $x$ is a lower bound of $A$, i.e.$x \leq a \leq y, \forall a \in A$, so $B$ is a bounded above set.  As $B$ is a bounded above subset of $\mathbb{R}$, then $B$ has a supremum, hence $sup(B)$ exists.  We must split this notion into two cases:
+\begin{center}
+(i) If $A$ is unbounded below
+
+(ii) If $A$ is bounded below
+\end{center}
+For case (i), if $A$ is unbounded below, then $A$ has no lower bound, so $B = \emptyset$ and also $inf(A_ = \emptyset = sup(B)$.
+
+For case (ii), if $A$ is bounded below, then $B$ is a non-empty set.  $B$ then contains all the lower bounds of A, so if $x \in B$, then $x \leq a, \forall a \in A$.  Clearly, $a$ is an upper bound of $B$, $\forall a \in A$ i.e. every element of $A$ is an upper bound of $B$.  As $A$ has an infimum, then $A$ is bounded below and a subset of $\mathbb{R}$, so $inf(A)$ exists.  Let $m = inf(A)$.  Then, $m$ is the greatest lower bound, so for any lower bound $y$ of $A$, $y \leq m \leq a, \forall a \in A$.  As $y$ is a lower bound, so $y \in B$. Therefore, $m$ is the least upper bound of $B$ meaning that $sup(B) = m$.
+
+Therefore, $sup(B) = m = inf(A)$, which means that $sup(B) = inf(A)$.
+ \end{proof}	
+ 
+	\item  Use (a) to explain why there is no need to assert that an infimum exists as part of the Axiom of Completeness.
+\par \medskip
+	\textbf{\textcolor{black}{\underline{Answer}:}}
+\textcolor{black}{The reason why there is no need to assert that an infimum exists as part of the Axiom of Completeness is because as soon as we consider that $sup(B)$ exists, then $B \neq \emptyset$, i.e. the lower bound of $A$ must exist, i.e. $A$ is bounded below.  $A$ is a non-empty subset of $\mathbb{R}$, which is bounded below, so from the completeness property of $\mathbb{R}$, we can say that $inf(A)$ exists but not as a part of the Axiom of Completeness. }
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

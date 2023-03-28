@@ -1,0 +1,83 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{tikz} % useful for graphics
+
+% Define a lemma environment
+% Set the style of the new theorem environments so that the text isn't in italics
+\theoremstyle{definition}
+% Define lemma environment, the first argument is the name in LaTeX, the second argument is what is typeset
+\newtheorem{lemma}{Lemma}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#6
+
+Assigned: October 26, 2022
+
+Due: November 2, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+\item[5.]  ~[Lauen, A.] Show that if $K$ is compact, then $\sup{(K)}$ and $\inf{(K)}$ both exist and are elements of $K$.  Hint: previous parts of this homework assignment can be used to make this proof much easier.
+
+\par \medskip
+
+Idea 1:
+\begin{proof}	
+      Given that $K$ is compact, then by the Heine-Borel Theorem, we can say that $K$ is bounded and closed.  This means that there exists a real number $M$ such that $|k|\leq M, \forall k \in K$.  So $M$ is an upper bound of $K$.  By that Axiom of Completeness, $K$ has a least upper bound, or $\sup{(K)}$.  Also, according to Homework 6 Problem 2, $\sup{(K)} \in \Bar{K}$ .  Since $K$ is also closed, then $\Bar{K}=K$.  So $\sup{(K)} \in \Bar{K}=K$, hence $\sup{(K)} \in K$.  
+
+      Now there also exists a real number $L$ such that $|k|\geq L, \forall k \in K$.  So $L$ is a lower bound of $K$.  By Homework 2 Problem 7, $K$ has a greatest lower bound, or $\inf{(K)}$.  Also $\inf{(K)} \in \Bar{K}$.  Since $K$ is closed, then $\Bar{K}=K$.  Hence $\inf{(K)} \in K$.
+
+      Therefore $\sup{(K)}$ and $\inf{(K)}$ both exist and are elements of $K$.
+ \end{proof}
+
+\par \medskip
+
+ Idea 2:
+ \begin{proof}
+ By contradiction.  Suppose that $K$ is a compact set.  Then according to the Heine-Borel theorem, the set $K$ is both bounded and closed.  Since $K$ is bounded, the real numbers $s=\sup{(K)}$ and $l =\inf{(K)}$ exist.  Assume to the contrary that $s$ is not in $K$, then $s \in K^c$.  Now observe that since $K$ is compact, then $K^c$ is open.  So for some $\epsilon > 0$ such that $V_{\epsilon}(s) \subset K^c$, then $s-\epsilon$ is an upper bound for $K$, contradicting the fact that $s$ is the least upper bound of $K$.  Similarly, one can show that $l$ in $K$.  Therefore $\sup{(K)}$ and $\inf{(K)}$ both exist and are elements of $K$.
+ \end{proof}
+
+
+\end{enumerate}
+
+\end{document}

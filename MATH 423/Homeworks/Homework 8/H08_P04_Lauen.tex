@@ -1,0 +1,104 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+\usepackage{tikz} % useful for graphics
+
+% Define a lemma environment
+% Set the style of the new theorem environments so that the text isn't in italics
+\theoremstyle{definition}
+% Define lemma environment, the first argument is the name in LaTeX, the second argument is what is typeset
+\newtheorem{lemma}{Lemma}
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf 
+Name: Amanda Lauen
+
+Professor: Dr. Brent Deschamp
+
+Course: MATH 423-01  Advanced Calculus I
+
+Assignment: Homework \#8 Everyone Problem 
+
+Assigned: November 10, 2022
+
+Due: November 17, 2022
+}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+\item[4.]  ~Assume that $f:[0,\infty) \to \mathbb{R}$ is continuous at every point in its domain.  Show that if there exists $b > 0$ such that $f$ is uniformly continuous on the set $[b,\infty)$, then $f$ is uniformly continuous on $[0,\infty)$.  Hint: note that $[0,b]$ is compact.
+
+%Idea 1: 
+%begin{proof}
+%As $f$ is continuous at every point on its domain, in %particular, $f$ is continuous on  $[0, b]$.  Now $[0, %b]$ is compact and continuous function on a compact set %is uniformly continuous, thus $f$ is uniformly %continuous on $[0, b]$.  On the other hand, by %assumption, $f$ is uniformly continuous on %$[b,\infty)$.  As $[0, \infty) = [0, b] \cup [b, %\infty)$ and $[0,b] \cap [b,\infty) = \emptyset$, %WRONG: it follows that $f$ is uniformly continuous on %$[0,\infty)$.
+%\end{proof}
+
+%Idea 2:
+\begin{proof}
+Given $f:[0,\infty) \to \mathbb{R}$ be a continuous function.  We have to prove if there exists some $b > 0$ such that $f$ is uniformly continuous on the set $[b,\infty)$, then $f$ is uniformly continuous on $[0,\infty)$
+
+We need to split this into three cases:
+
+Case 1:
+Let $p, q \in [b, \infty)$.  Case 1 can be solved using assumption that $f$ is uniformly continuous on $[b,\infty)$. 
+
+Case 2:
+Let $p, q \in [0,b]$.
+As $f$ is continuous at every point on its domain, in particular, $f$ is continuous on  $[0, b]$.  Now $[0, b]$ is compact and a continuous function on a compact set is uniformly continuous, thus $f$ is uniformly continuous on $[0, b]$.  
+
+Case 3:  
+Let $p \in [0,b], q \in [b, \infty)$.  We need two facts:
+
+(1) Since $f(x)$ is uniformly continuous on $[b, \infty)$, there exists a positive $\delta_1$, such that $|f(x)-f(b)| < \epsilon_1 = \frac{\epsilon}{2}, \forall x$ satisfying $|x-b| < \delta_1$. 
+
+(2) Since $f(x)$ is continuous on $[0,b]$, it is uniformly continuous on $[0,b]$.  Hence there exists a positive $\delta_2$ such that $\forall x_1, x_2 \in [0,b]$ with $|x_1-x_2|<\delta_2 = \frac{\delta}{2}, |f(x_1)-f(x_2)| < \epsilon_2 = \frac{\epsilon}{2}$.
+
+Then  $|p-b| < \delta_1 = \frac{\delta}{2}$ and $|q-b| < \delta_2 = \frac{\delta}{2}$.  Then $|p-q|= |p-b+b-q| \leq |p-b| + |b-q| < \delta_1 + \delta_2 = \frac{\delta}{2}+\frac{\delta}{2} = \delta$ by (1) and (2).  Then $|f(p)-f(b)| < \frac{\epsilon}{2}$ and $|f(q)-f(b)| < \frac{\epsilon}{2}$ by (1) and (2).  Therefore $|f(p)-f(q)| \leq |f(p)-f(b)+f(b)-f(q)| \leq |f(p)-f(b)| + |f(b)-f(q)| < \epsilon_1 + \epsilon_2 = \frac{\epsilon}{2}+\frac{\epsilon}{2} = \epsilon$ by (1) and (2).
+
+Thus we have that $|f(p)-f(q)| < \epsilon$ whenever $p, q \in [0,\infty)$ with $|p-q| < \delta$.  This proves that $f(x)$ is uniformly continuous on $[0,\infty)$.
+
+\end{proof}
+	
+%%%%%%%%%%%%
+
+\end{enumerate}
+
+\end{document}

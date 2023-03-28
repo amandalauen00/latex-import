@@ -1,0 +1,202 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \# 1
+
+Assigned: August 29, 2022
+
+Due: September 7, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\item  ~[Aitchison, A.] State the contrapositive ($\neg q \to \neg p)$ of each of the following conditional statements.  It will help in some cases to rewrite the statement as $p \to q$ before starting.
+
+	\begin{enumerate}
+	
+	\item  If it snows today, then I will ski tomorrow.
+	
+	\item  I come to class whenever there is going to be a quiz.
+	
+	\item  A positive number is a prime only if it has no divisors other than $1$ and itself.
+	
+	\item  I go to the beach whenever it is a sunny summer day.
+	
+	\item  When I stay up late, it is necessary that I sleep until noon.
+	
+	\end{enumerate}
+
+\item  ~[Delfosse, D.] Describe what we would have to demonstrate in order to disprove each of the following statements.
+
+	\begin{enumerate}
+	
+	\item  At every college in the United States there is a student who is at least seven feet tall.
+	
+	\item  For all colleges in the United States there exists a professor who gives every student a grade of either A or B.
+	
+	\item  There exists a college in the United States where every student is at least six feet tall.
+	
+	\end{enumerate}
+
+\item\label{prob:DeMorgan}  Prove De Morgan's Laws.  Assume that $A$ and $B$ are sets.
+
+	\begin{enumerate}
+	
+	\item  ~[Griffith, B.] $\left( A \cap B \right)^{c} = A^{c} \cup B^{c}$.
+	
+	\item  ~[Hale, A.] $\left( A \cup B \right)^{c} = A^{c} \cap B^{c}$.
+	
+	\end{enumerate}
+	
+\item\label{prob:identities}  Let $A$, $B$, and $C$ be sets.  Prove the following statements.
+
+	\begin{enumerate}
+	
+	\item  ~[Powers, S.] $A \cup (B \setminus A) = A \cup B$.
+	
+	\item  ~[Schipke, K.] $A \cap (B \setminus A) = \emptyset$.
+	
+	\item  ~[Schmidt, S.] $(B \setminus A) \cup (C \setminus A) = (B \cup C) \setminus A$.
+	
+	\item  ~[Smith, G.] $A \setminus B = A \cap B^c$.
+	
+	\item  ~[Wright, A.] $(A \cap B) \cup (A \cap B^c) = A$.
+	
+	\end{enumerate}
+	
+\item\label{prob:sym_diff}  ~[Deschamp, B.] The \emph{symmetric difference} of the sets $A$ and $B$, denoted $A \oplus B$, is the set containing those elements in either $A$ or $B$ but not in both $A$ and $B$.  In class we showed that \begin{equation}\label{eq:sym_diff} A \oplus B = (A \cup B) \setminus (A \cap B) = (A \setminus B) \cup (B \setminus A).\end{equation}  Prove that $(A \oplus B) \oplus B = A$.
+
+This is a different type of set argument.  It would be too complicated to write a proof using elements of these sets.  Instead of an element-wise argument, this problem works better with a set-wise argument.  In this case the idea is to use the identities in Problems \ref{prob:DeMorgan} and \ref{prob:identities} to write out one side of $A \oplus B$ given in (\ref{eq:sym_diff}) and then use various identities to manipulate one side of the equation into the other side of (\ref{eq:sym_diff}).  At each stage of the manipulation state which identity you used.  I needed the following additional identities.  If you invent your own identity, give it a unused letter and make sure that you provide proof that the identity is true.
+
+	\begin{center}
+	\begin{tabular}{l@{\hspace{0.4in}}l@{\hspace{0.5in}}l}
+	(a) $A \setminus (B \cup C) = (A \setminus B) \cap (A \setminus C)$ & (b) $B \setminus (A \cap B^c) = B$ & (c) $B \setminus (B \cap A^c) = A \cap B$\\
+	\end{tabular}
+	\end{center}
+	
+% This is a future problem for a future assignment.  Don't worry about this problem.	
+	
+%\item  Use the Triangle Inequality to prove the following inequalities.
+%
+%	\begin{enumerate}
+%	
+%	\item  $|a-b| \leq |a| + |b|$.  Hint: hide the negative sign inside a substitution.
+%	
+%	\item  $||a| - |b|| \leq |a-b|$.  Hint: split this into two cases, (i) $|a| - |b| \leq |a-b|$ and (ii) $-(|a| - |b|) \leq |a-b|$.  For (i) try to prove that $|a| \leq |b| + |a-b|$.
+%	
+%	\end{enumerate}
+
+\newpage
+
+\item  ~[Papiernik, J.] Consider a set $A$.  The \emph{power set} of $A$, denoted $\mathcal{P}(A)$, is the set that contains all of the subsets of $A$.  For example, if $A = \{ 1, 2 \}$, then $\mathcal{P}(A) = \{ \emptyset, \{1\}, \{2\}, \{1,2\} \}$.  Prove that $|\mathcal{P}(A)| = 2^n$, where $|A| = n$.  Hint: use a counting argument.
+
+\item  Recall that given a function $f:A \to B$ the \emph{range} of $f$ is the set $\{ y \in B: y=f(x) \textnormal{ for some } x \in A\}$.  Note that the range is a subset of the codomain, but they may not be equal.  Let $S$ be a subset of the domain $A$.  The \emph{image} of $S$ is the set $f(S) = \{f(x): x \in S \}$.  Note that this means the range is the image of the domain.
+
+Let $f:A \to B$, and let $S$ and $T$ be subsets of $A$.
+
+	\begin{enumerate}
+	
+	\item  ~[Lindskov, I.] Prove that $f(S \cup T) = f(S) \cup f(T)$.
+	
+	\item  ~[Nupen, R.] Prove that $f(S \cap T) \subseteq f(S) \cap f(T)$.
+	
+	\item  ~[Nupen, R.] Find a function and two sets for which $f(S \cap T) \neq f(S) \cap f(T)$.
+	
+	For this counterexample I recommend what is sometimes called a toy example.  This means finding a very simple example with very small sets (maybe just a number or two in the set) and a very simple function.  To make this work, find $S$ and $T$ such that $S \cap T = \emptyset$.  This isn't required, but it will make things easier.  The key is to find a function that is not injective.  For those of you who want to get at the heart for why the backward containment ($\supseteq$) fails, try to prove that direction and note where the function $f$ has to be injective for things to work.
+	
+	\end{enumerate}
+	
+\item  Given a function $f: D \to \mathbb{R}$ and a subset $B \subseteq \mathbb{R}$, let $f^{-1}(B)$ be the set of all numbers from the domain $D$ that are mapped into $B$; that is, $f^{-1}(B) = \{ x \in D: f(x) \in B \}$.  Note that this is a set of numbers and not an inverse function.  This set is called the \emph{preimage} of $B$.
+
+	\begin{enumerate}
+	
+	\item  ~[Kline, L.] Let $f(x) = x^2$.  If $A$ is the closed interval $[0,4]$ and $B$ is the closed interval $[-1,1]$, find $f^{-1}(A)$ and $f^{-1}(B)$.
+	
+	Is it true that $f^{-1}(A \cap B) = f^{-1}(A) \cap f^{-1}(B)$ and $f^{-1}(A \cup B) = f^{-1}(A) \cup f^{-1}(B)$?
+	
+	\item  ~[Kline, L.] Show that for an arbitrary function $g: \mathbb{R} \to \mathbb{R}$ that $g^{-1}(A \cap B) = g^{-1}(A) \cap g^{-1}(B)$.
+	
+	\item  ~[Krason, T.] Show that for an arbitrary function $g: \mathbb{R} \to \mathbb{R}$ that $g^{-1}(A \cup B) = g^{-1}(A) \cup g^{-1}(B)$.
+	
+	\end{enumerate}
+	
+\item  Assume that De Morgan's Laws in Problem \ref{prob:DeMorgan} have been proven.  Assume that $A_1, A_2, \ldots, A_n$ are sets.
+
+	\begin{enumerate}
+	
+	\item  ~[Harter, J.] Use induction to prove that $$\left( A_1 \cup A_2 \cup \cdots \cup A_n \right)^c = A_1^c \cap A_2^c \cap \cdots \cap A_n^c.$$
+	
+	\item  ~[Harter, J.] Explain why induction cannot be used to conclude that $$\left( \bigcup_{k=1}^{\infty} A_k \right)^c  = \bigcap_{k=1}^{\infty} A_k^c.$$
+	
+	\item  ~[James, J.] Is the above statement true?  If not, provide a counterexample.  If it is true, prove the statement without using induction.
+	
+	\end{enumerate}
+	
+\newpage
+	
+\item  ~[Staat, E.]  A function, $f$,  whose domain and codomain are subsets of $\mathbb{R}$ is called \emph{increasing} if $f(x) \leq f(y)$ whenever $x < y$ and $x$ and $y$ are in the domain of $f$.  A function, $f$,  whose domain and codomain are subsets of $\mathbb{R}$ is called \emph{strictly increasing} if $f(x) < f(y)$ whenever $x < y$ and $x$ and $y$ are in the domain of $f$.
+
+	\begin{enumerate}
+	
+	\item  Prove that a strictly increasing function from $\mathbb{R}$ to $\mathbb{R}$ is injective.  Hint: note that the definition of an injective function deals with numbers being equal.  In this problem we don't anything that would help us show that numbers are equal, since we're only given inequalities.  As a result, use the contrapositive of the definition of an injective function.  Be careful, I'm not suggesting a proof by contrapositive, only that you use the contrapositive of the definition.
+	
+	\item  Give an example of an increasing function from $\mathbb{R}$ to $\mathbb{R}$ that is not injective.
+	
+	\end{enumerate}
+	
+\item  Suppose that $g: A \to B$ and $f:B \to C$.  Recall that the \emph{composition} $f \circ g: A \to C$ is the function $(f \circ g)(x) = f(g(x))$.
+
+	\begin{enumerate}
+	
+			\item  {~[Lauen, A.] Show that if both $f$ and $g$ are injective, then $f \circ g$ is also injective.}
+\begin{proof}
+Let $A$, $B$, and $C$ be sets.  Also, let $f: B \xrightarrow{} C$ and $g:  A\xrightarrow{} B$ be functions.  Let $f$ and $g$ be injective.  This means that given values $f(a) \in C$ and $f(b) \in C$ with $f(a)=f(b)$, then $a = b$.  This also means that given values $g(m) \in B$ and $g(n) \in B$ with $g(m)=g(n)$, then $m = n$.  Assume $(f \circ g)(x) = (f \circ g)(y)$.  This statement can be rewritten as $f(g(x)) = f(g(y))$ given the definition from the problem.  Then call $a = g(x)$ and $b = g(y)$.  After this call, then it can be said that $f(a) = f(b)$.  Because $f$ is injective, then $a=b$.  Since $a = b$, it can be rewritten as $g(x) = g(y)$ from above.  Because g is injective, it can be said that $x=y$.  Therefore $f \circ g$ is injective.
+\end{proof}
+	\item  ~[Lewis, J.] Show that if both $f$ and $g$ are surjective, then $f \circ g$ is also surjective.
+	\end{enumerate}
+
+\end{enumerate}
+
+\end{document}

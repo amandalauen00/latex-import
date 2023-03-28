@@ -1,0 +1,91 @@
+%Every LaTeX file needs a documentclass declaration.
+%Possibilities are article, book, letter.  Font size is also declared.
+
+\documentclass[10pt]{article}
+
+%special packages used for symbols, formatting, etc.
+
+\usepackage{amsmath} % contains the align* environment, which is great for manipulating formulas
+\usepackage{amssymb} % contains common symbols
+\usepackage{amsthm} % has the proof environment
+\usepackage[margin=1in]{geometry} % specifies page properties, such as the margin
+%\usepackage{siunitx} % useful for typesetting units
+
+% User-defined commands
+
+\newcommand{\newprob}{\medskip \hrule \medskip}
+\newcommand{\fanc}[1]{\mathbb{#1}}
+\newcommand{\rn}[1]{\fanc{R}^{#1}}
+\def\qed{\hspace*{\fill}\rule{1.854mm}{3mm}}  % the fancy box at the end of a proof
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%beginning of document, every \begin{} also requires an \end{} command.
+
+%\renewcommand{\baselinestretch}{2}
+
+\begin{document}
+
+\pagestyle{empty}  %suppress page numbers, etc.
+
+\begin{center}  %center command, also see flushright, flushleft
+
+{\bf MATH 423-01  Advanced Calculus I
+
+Homework \#4
+
+Assigned: September 21, 2022
+
+Due: September 28, 2022}
+
+\end{center}
+
+\medskip
+
+\hrule   %horizontal line
+
+\bigskip
+
+% list environment: description, itemize, and enumerate
+
+\begin{enumerate}
+	
+\item[5.]  ~[Lauen, A.] Suppose that $(a_n)$ converges to $a$.  Define $b_n = \frac{a_n + a_{n+1}}{2}$.  Prove that $(b_n)$ converges to $a$.
+\begin{proof}
+
+Step 0: Consider $b_n = \frac{a_n + a_{n+1}}{2}$.  Then
+    \begin{align*}
+    |b_n-a| &= |\frac{a_n + a_{n+1}}{2}-a|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-\frac{a}{1}\right|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-(\frac{a}{1}\cdot\frac{2}{2})\right|\\
+    &=\left|\frac{a_n+a_{n+1}-2a}{2}\right|\\
+    &=\left|\frac{(a_n-a)+(a_{n+1}-a)}{2}\right|\\
+    &\leq \left|\frac{a_n-a}{2}|+|\frac{a_{n+1}-a}{2}\right|\\
+    &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+    &=\epsilon.\\
+    \end{align*}
+
+Step 1: Let $\epsilon > 0$.  
+
+Step 2:  Since $(a_n) \rightarrow a$, $\forall \epsilon > 0, \exists N \in \mathbb{N}$ such that whenever $n \geq N, |a_n-a| < \epsilon$. Also, it can be said that since $n+1 > n \geq N, |a_{n+1} - a| < \epsilon$.
+
+Step 3: Let $n \geq N$. 
+
+Step 4: Consider 
+    \begin{align*}
+    |b_n-a| &= |\frac{a_n + a_{n+1}}{2}-a|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-\frac{a}{1}\right|\\
+    &=\left|\frac{a_n + a_{n+1}}{2}-(\frac{a}{1}\cdot\frac{2}{2})\right|\\
+    &=\left|\frac{a_n+a_{n+1}-2a}{2}\right|\\
+    &=\left|\frac{(a_n-a)+(a_{n+1}-a)}{2}\right|\\
+    &\leq \left|\frac{a_n-a}{2}|+|\frac{a_{n+1}-a}{2}\right|\\
+    &< \frac{\epsilon}{2}+\frac{\epsilon}{2}\\
+    &=\epsilon.\\
+    \end{align*}
+
+Therefore $(b_n) \rightarrow a$.
+\end{proof}
+
+\end{enumerate}
+
+\end{document}
